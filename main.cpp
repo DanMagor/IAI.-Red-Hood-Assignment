@@ -1,6 +1,9 @@
 #include <iostream>
-
+#include "Environment.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Environment environment;
+    environment.PrintCell();
+
     return 0;
 }
