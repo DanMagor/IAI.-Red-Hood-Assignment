@@ -7,21 +7,32 @@
 
 #include <vector>
 #include "Point.h"
+#include <string>
+
 
 using namespace std;
 
 class Unit {
 protected:
-    Point position_; //the position of unit in environment
+    string ID_;
+    Point position_ = Point(0,0); //the position of unit in environment
+    char symbol_=' ';  //symbol for visualization
 public:
     //Initialization
-    Unit(Point); //constructor with default position on the field;
+    Unit(string); //constructor with ID initialization
+    Unit(Point); //constructor with position initialization
+
+    void SetID(string);
 
     //Unit information
+    string GetID();
+    char GetSymbol();
+
     Point GetPosition();
 
     //Unit Behavior
-    virtual void MoveTo(Point);
+    virtual void SetPosition(Point);
+    virtual void SetPosition(int,int);
 
     virtual void CheckArea();
 

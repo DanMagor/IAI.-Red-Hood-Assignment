@@ -13,8 +13,8 @@
 #define DEFAULT_SIZE 9
 
 #include "Unit.h"
-#include <vector>
-#include <array>
+#include <string.h>
+#include <map>
 
 using namespace std;
 
@@ -22,25 +22,30 @@ class Environment {
 private:
     int size_;       //width and length of lattice
     Unit ***lattice; //two dimensional dynamic array with pointers on Unit
+    map<string, Unit*> units_;
 public:
 
+    //Initialization
     Environment();
-
     Environment(int);  // constructor for non default lattice
-    ~Environment();
+
 
     // Environment Information
     int GetSize();     //return environment size (width and length)
     void PrintCell();
-
+    const Unit& GetUnitFromCell(const Point &);
+    const Unit& GetUnitFromID(string)const;
     //Unit interaction
-    bool IsEmptyCell(Point);
+    void AddUnit(Unit&);
+    bool IsEmptyCell(const Point &);
+    void UpdateUnitsPositions();
 
-    Unit GetUnitFromCell(Point);
+    bool IsValidOverlapping(const Unit &);  //check does unit overlap with valid unit. Also return true if there is no overlap.
 
-    void CheckOverlap();
+    //Destructor
+    ~Environment();
 
-    void PlaceUnitAtCell(Unit &unit,Point);  //#TODO Write Exception
+
 
 };
 

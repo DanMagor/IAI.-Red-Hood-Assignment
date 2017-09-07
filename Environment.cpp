@@ -4,7 +4,7 @@
 
 #include "Environment.h"
 
-//#TODO: DELETE INCLUDE:
+//#TODO: DELETE INCLUDE iostream IF NEED NOT
 #include <iostream>
 
 //Default Constructor. Lattice has size 9x9
@@ -30,28 +30,56 @@ Environment::~Environment() {
 }
 
 
-void Environment::PlaceUnitAtCell(Unit &unit, Point  position) {
-    int x = position.X(), y = position.Y();
-    if (x > size_ || y > size_) throw std::out_of_range("Place Unit out of range");
-    if (lattice[x][y] == nullptr) lattice[x][y] = &unit;
-    else CheckOverlap();
-    unit.MoveTo(position);
+void Environment::AddUnit(Unit &unit) {
+    if (units_.find(unit.GetID()) != units_.end()) throw std::invalid_argument("Duplicated Unit ID");
+    units_[unit.GetID()] = &unit;
 }
 
-//Debug Function
+void Environment::UpdateUnitsPositions() {
+    for (auto u:units_) {
+        Unit *unit = u.second;
+        int x = unit->GetPosition().X();
+        int y = unit->GetPosition().Y();
+        if (y > size_ - 1 || x > size_ - 1) throw std::out_of_range("Unit placed out of range");
+        lattice[y][x] = unit;
+    }
+}
+
+const Unit &Environment::GetUnitFromCell(const Point &point) {
+    int x = point.X();
+    int y = point.Y();
+    if (y > size_ - 1 || x > size_ - 1)
+        throw std::out_of_range("Unit place out of range");
+    return *lattice[y][x];
+
+}
+
+
+
+
+
+//Debug Function #TODO: DELETE IF NEED NOT
 void Environment::PrintCell() {
 
     for (int i = 0; i < size_; ++i) {
         for (int j = 0; j < size_; ++j) {
             if (lattice[i][j] == nullptr) std::cout << "_";
-            else std::cout << "*";
+            else cout<<lattice[i][j]->GetSymbol();
             std::cout << " ";
         }
         std::cout << std::endl;
     }
 }
 
-void Environment::CheckOverlap() {
+const Unit & Environment::GetUnitFromID(string ID)const {
+     if (units_.find(ID) == units_.end()) throw std::invalid_argument("No unit with such ID");
+    Unit a("DEBUG"); //TODO:DELETE
+    return a;
 }
+
+
+
+
+
 
 

@@ -12,14 +12,15 @@ private:
     unsigned int y_;
 public:
     Point(unsigned int, unsigned int);
+    Point();
 
     void setX(unsigned int);
 
     void setY(unsigned int);
 
-    unsigned int X();
+    unsigned int X()const;
 
-    unsigned int Y();
+    unsigned int Y()const;
 };
 
 

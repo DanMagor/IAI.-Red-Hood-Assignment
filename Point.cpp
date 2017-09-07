@@ -19,11 +19,17 @@ void Point::setY(unsigned int y) {
     y_ = y;
 }
 
-unsigned int Point::X() {
+unsigned int Point::X()const {
     return x_;
 }
 
-unsigned int Point::Y() {
+unsigned int Point::Y()const {
     return y_;
+}
+
+Point::Point() {
+    x_ = 0;
+    y_ = 0;
+
 }
 
