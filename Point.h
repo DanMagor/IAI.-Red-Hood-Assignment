@@ -21,6 +21,11 @@ public:
     unsigned int X()const;
 
     unsigned int Y()const;
+
+    bool operator<(Point &);
+    bool operator<(const Point &) const;
+
+
 };
 
 

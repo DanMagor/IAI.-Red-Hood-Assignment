@@ -33,3 +33,14 @@ Point::Point() {
 
 }
 
+bool Point::operator<(Point &other) {
+    if (X()<other.X()) return true;
+    return false;
+}
+
+bool Point::operator<(const Point &other) const {
+    if (X()<other.X() || Y()<other.Y()) return true;
+    return false;
+}
+
+
