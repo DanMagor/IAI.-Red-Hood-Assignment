@@ -5,7 +5,7 @@
 #include "Unit.h"
 
 
-Unit::Unit(Point position) : position_(position) {}
+Unit::Unit(pair<int,int> position) : position_(position) {}
 Unit::Unit(string id) {
     ID_ = id;
 }
@@ -20,14 +20,11 @@ string Unit::GetID() {
 }
 
 
-void Unit::SetPosition(Point position) {
-    position_ = position;
-}
 void Unit::SetPosition(int y, int x) {
-    position_ = Point(x,y);
+    position_ = pair<int,int>(y,x);
 }
 
-Point Unit::GetPosition() {
+pair<int,int> Unit::GetPosition() {
     return position_;
 }
 
@@ -39,6 +36,10 @@ void Unit::CheckArea() {
 
 char Unit::GetSymbol() {
     return symbol_;
+}
+
+void Unit::SetPosition(pair<int,int> position) {
+    position_ = position;
 }
 
 

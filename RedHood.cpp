@@ -5,7 +5,7 @@
 #include "RedHood.h"
 #include "Environment.h"
 RedHood::RedHood(string ID) : Unit(ID) {symbol_='R';}
-RedHood::RedHood(Point position) : Unit(position){symbol_='R';}
+RedHood::RedHood(pair<int,int> position) : Unit(position){symbol_='R';}
 
 void RedHood::SetEnvironment(const Environment &full_environment, int size) {
 
@@ -19,12 +19,12 @@ void RedHood::SetEnvironment(const Environment &full_environment, int size) {
             environment_[i][j] = nullptr;
 
     //RedHood Position
-    int y = position_.Y(); int x = position_.X();
+    int y = position_.first; int x = position_.second;
     environment_[y][x] = this;
 
     //Granny Position
     Unit granny = full_environment.GetUnitWithID("Granny");
-    y = granny.GetPosition().Y(); x = granny.GetPosition().X();
+    y = granny.GetPosition().first; x = granny.GetPosition().second;
     environment_[y][x] = &granny;
 
 }

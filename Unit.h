@@ -15,12 +15,12 @@ using namespace std;
 class Unit {
 protected:
     string ID_;
-    Point position_ = Point(0,0); //the position of unit in environment
+    pair<int,int> position_; //the position of unit in environment
     char symbol_=' ';  //symbol for visualization
 public:
     //Initialization
     Unit(string); //constructor with ID initialization
-    Unit(Point); //constructor with position initialization
+    Unit(pair<int,int>); //constructor with position initialization
 
     void SetID(string);
 
@@ -28,10 +28,10 @@ public:
     string GetID();
     char GetSymbol();
 
-    Point GetPosition();
+    pair<int,int> GetPosition();
 
     //Unit Behavior
-    virtual void SetPosition(Point);
+    virtual void SetPosition(pair<int,int>);
     virtual void SetPosition(int,int);
 
     virtual void CheckArea();

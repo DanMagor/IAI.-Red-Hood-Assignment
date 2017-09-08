@@ -45,19 +45,19 @@ int main() {
             if (j + 1 < environment.GetSize()) graph.AddEdge(point(i, j), point(i, j + 1));
         }
     }
-//    map<point,point> reverse_path = AStar::FindPath(graph,point(0,0),point(0,0));
-//    point current(0,0);
-//    stack<point> path;
-//    path.push(current);
-//    while(reverse_path[current]!=point(0,0)){
-//        path.push(reverse_path[current]);
-//        current = reverse_path[current];
-//    }
-//    path.push(point(0,0));
-//    while (!path.empty()){
-//        cout<<path.top().first<<" "<<path.top().second<<"  ";
-//        path.pop();
-//    }
+    map<point,point> reverse_path = AStar::FindPath(graph,point(0,0),point(3,0));
+    point current(3,0);
+    stack<point> path;
+    path.push(current);
+    while(reverse_path[current]!=point(0,0)){
+        path.push(reverse_path[current]);
+        current = reverse_path[current];
+    }
+    path.push(point(0,0));
+    while (!path.empty()){
+        cout<<path.top().first<<" "<<path.top().second<<"  ";
+        path.pop();
+    }
 
 
 

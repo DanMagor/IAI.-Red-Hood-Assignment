@@ -13,12 +13,13 @@ map<point,point> AStar::FindPath(const Graph<pair<int,int>> & graph, point start
     map<point,point> came_from;
     came_from[start] = start;
     cost_so_far[start] = 0;
-
+    bool isFindPath = false;
     while(!frontier.empty()){
         point &current = frontier.front();
-        if(current == goal)
+        if(current == goal) {
+            isFindPath = true;
             break;
-
+        }
         for(auto next:graph.GetNeighbors(current)){
             int new_cost = cost_so_far[current] + 1;
             if (cost_so_far.find(next) == cost_so_far.end() || new_cost<cost_so_far[next]){
@@ -29,6 +30,7 @@ map<point,point> AStar::FindPath(const Graph<pair<int,int>> & graph, point start
         }
         frontier.pop();
     }
-    return came_from;
+    if (isFindPath)return came_from;
+    else return map<point,point>();
 
 }

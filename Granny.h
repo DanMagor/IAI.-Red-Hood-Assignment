@@ -11,7 +11,7 @@
 class Granny: public Unit {
 public:
     Granny(string);
-    Granny(Point);
+    Granny(pair<int,int>);
 
 };
 

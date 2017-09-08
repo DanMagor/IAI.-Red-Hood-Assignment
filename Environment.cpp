@@ -49,8 +49,8 @@ void Environment::AddUnit(Unit &unit) {
 void Environment::UpdateUnitsPositions() {
     for (auto u:units_) {
         Unit *unit = u.second;
-        int x = unit->GetPosition().X();
-        int y = unit->GetPosition().Y();
+        int x = unit->GetPosition().second;
+        int y = unit->GetPosition().first;
         if (y > size_ - 1 || x > size_ - 1) throw std::out_of_range("Unit placed out of range");
         lattice[y][x] = unit;
     }

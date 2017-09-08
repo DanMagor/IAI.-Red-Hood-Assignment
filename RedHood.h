@@ -15,8 +15,8 @@ private:
 public:
     //Initialization
     RedHood(string);
-    RedHood(Point);
-    void SetCutterPositions(Point,Point);
+    RedHood(pair<int,int>);
+    void SetCutterPositions(pair<int,int>,pair<int,int>);
     void SetEnvironment(const Environment &,int);  //Set available environment information for RedHood
 
     //Environment information
