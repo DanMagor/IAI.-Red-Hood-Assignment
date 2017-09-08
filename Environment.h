@@ -27,20 +27,20 @@ public:
 
     //Initialization
     Environment();
-    Environment(int);  // constructor for non default lattice
+    explicit Environment(int);  // constructor for non default lattice
 
 
     // Environment Information
     int GetSize();     //return environment size (width and length)
     void PrintCell();
     const Unit& GetUnitFromCell(const Point &);
-    const Unit& GetUnitFromID(string)const;
-    //Unit interaction
-    void AddUnit(Unit&);
+    const Unit& GetUnitWithID(string) const;   //return a reference of unit in environment with specific ID
     bool IsEmptyCell(const Point &);
-    void UpdateUnitsPositions();
 
-    bool IsValidOverlapping(const Unit &);  //check does unit overlap with valid unit. Also return true if there is no overlap.
+    //Unit interaction
+    void AddUnit(Unit&);   //add Unit in environment
+    void UpdateUnitsPositions();  //Check positions of Units and update it for lattice
+
 
     //Destructor
     ~Environment();

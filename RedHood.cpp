@@ -23,7 +23,7 @@ void RedHood::SetEnvironment(const Environment &full_environment, int size) {
     environment_[y][x] = this;
 
     //Granny Position
-    Unit granny = full_environment.GetUnitFromID("Granny");
+    Unit granny = full_environment.GetUnitWithID("Granny");
     y = granny.GetPosition().Y(); x = granny.GetPosition().X();
     environment_[y][x] = &granny;
 

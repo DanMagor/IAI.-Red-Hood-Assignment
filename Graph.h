@@ -7,13 +7,15 @@
 
 #include <vector>
 #include <map>
+#include <c++/4.8.3/iostream>
+#include "Point.h"
 
 using namespace std;
 
     template<typename V, typename E = double>
     struct vertex{
         typedef pair<E, vertex*> edge;
-        vector<edge> edges; 
+        vector<edge> edges;
         V name;
         vertex(V s) : name(s) {}
     };
@@ -32,9 +34,9 @@ using namespace std;
 
         void AddEdge(const V , const V, E = 0.0);
 
-        vector<vertex<V,E>*> GetVertices();
+        vmap GetVertices();
 
-        V &GetVertex(V);
+        vertex<V,E>* &GetVertex(V);
 
     };
 
@@ -42,6 +44,7 @@ using namespace std;
 template<typename V, typename E>
 void Graph<V,E>::AddVertex(V v) {
     typename vmap::iterator itr = vertices.find(v);
+
     if (itr == vertices.end()) {
         vertex<V> *temp;
         temp = new vertex<V,E>(v);
@@ -58,13 +61,10 @@ void Graph<V,E>::AddEdge(const V from, const V to, E weight) {
 }
 
 template<typename V, typename E>
-vector<vertex<V,E>*> Graph<V,E>::GetVertices() {
-    vector<vertex<V,E>*> result;
-    for(auto v:vertices){
-        result.push_back(v.second);
-    }
-    return result;
+map<V,vertex<V,E>*> Graph<V,E>::GetVertices() {
+    return vertices;
 }
+
 
 template<typename V, typename E>
 vector<vertex<V, E>*> Graph<V,E>::GetNeighbors(V v) {
@@ -73,6 +73,7 @@ vector<vertex<V, E>*> Graph<V,E>::GetNeighbors(V v) {
         neighbors.push_back(t.second);
     return neighbors;
 }
+
 
 
 #endif //ASSIGNMENT1_GRAPH_H

@@ -22,6 +22,17 @@ Environment::Environment() : size_(DEFAULT_SIZE) {
 
 
 }
+Environment::Environment(int size):size_(size) {
+    lattice = new Unit **[size_];
+
+    for (int i = 0; i < size_; ++i)
+        lattice[i] = new Unit *[size_];
+
+
+    for (int i = 0; i < size_; ++i)
+        for (int j = 0; j < size_; ++j)
+            lattice[i][j] = nullptr;
+}
 
 Environment::~Environment() {
     for (int i = 0; i < size_; ++i)
@@ -71,11 +82,17 @@ void Environment::PrintCell() {
     }
 }
 
-const Unit & Environment::GetUnitFromID(string ID)const {
+ const Unit & Environment::GetUnitWithID(string ID)const {
      if (units_.find(ID) == units_.end()) throw std::invalid_argument("No unit with such ID");
-    Unit a("DEBUG"); //TODO:DELETE
-    return a;
+    Unit a("DEBUG");
+     return a;
 }
+
+int Environment::GetSize() {
+    return size_;
+}
+
+
 
 
 
