@@ -2,7 +2,7 @@
 // Created by DanMagor on 08.09.2017.
 //
 
-#include <c++/4.8.3/set>
+#include <set>
 #include "SimulationController.h"
 
 void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) {
@@ -25,29 +25,84 @@ void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) 
 
     // Place Unit
     PlaceUnitsRandomly(environment);
+    environment.UpdateUnitsPositions();
+    environment.PrintCell();
 }
 
 void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     std::srand(time(NULL));
     typedef pair<int, int> point;
-    int amount_of_cells = environment.GetSize()*environment.GetSize();
-    set<int> cells;
-    for (int i=0; i<amount_of_cells;i++){
+    int amount_of_cells = environment.GetSize() * environment.GetSize();
+    set<int> cells;  //Cells available for placement
+    for (int i = 0; i < amount_of_cells; i++) {
         cells.insert(i);
     }
-    //Set Wolf Position
-    Unit temp = environment.GetUnitWithID("Wolf");
-    int random_cell = rand()%amount_of_cells; amount_of_cells--;
-    int y = random_cell/environment.GetSize();
-    int x = random_cell % environment.GetSize();
-    temp.SetPosition(point(y, x));
 
-    cells.erase(random_cell);
+    //Set Wolf Position
+    Unit unit = environment.GetUnitWithID("Wolf");
+
+    int random_cell = rand() % cells.size();
+    int y = random_cell / environment.GetSize();
+    int x = random_cell % environment.GetSize();
+    unit.SetPosition(point(y, x));
+
     //Set Bear Position
-    temp = environment.GetUnitWithID("Bear");
-    y = rand() % environment.GetSize();
-    x = rand() % environment.GetSize();
-    temp.SetPosition(point(y,x));
+    unit = environment.GetUnitWithID("Bear");
+    random_cell = rand() % cells.size();
+    y = random_cell / environment.GetSize();
+    x = random_cell % environment.GetSize();
+    unit.SetPosition(point(y, x));
+
+    //Exclude Bear and Wolf Range
+    //Wolf:
+    unit = environment.GetUnitWithID("Wolf");
+    int pos = unit.GetPosition().first * environment.GetSize() + unit.GetPosition().second;
+    cells.erase(pos);
+    cells.erase(pos - environment.GetSize());
+    cells.erase(pos + environment.GetSize()); // top and down cells
+    if (pos % environment.GetSize() != 0) cells.erase(pos - 1);
+    if (pos % environment.GetSize() != environment.GetSize() - 1) cells.erase(pos + 1); //left and right
+
+    //Bear:
+    unit = environment.GetUnitWithID("Bear");
+    pos = unit.GetPosition().first * environment.GetSize() + unit.GetPosition().second;
+    cells.erase(pos);
+    cells.erase(pos - environment.GetSize());
+    cells.erase(pos + environment.GetSize());
+    if (pos % environment.GetSize() != 0) {
+        cells.erase(pos - 1);
+        cells.erase(pos - environment.GetSize() - 1);
+    }
+    if (pos % environment.GetSize() != environment.GetSize() - 1) {
+        cells.erase(pos + 1);
+        cells.erase(pos + environment.GetSize() + 1);
+    } //left and right
+
     //Set Granny Position
+    unit = environment.GetUnitWithID("Granny");
+    random_cell = rand() % cells.size();
+    y = random_cell / environment.GetSize();
+    x = random_cell % environment.GetSize();
+    unit.SetPosition(point(y, x));
+    pos = y * environment.GetSize() + x;
+    cells.erase(pos);
+
+    //Set Cutter Position
+    unit = environment.GetUnitWithID("Cutter");
+    random_cell = rand() % cells.size();
+    y = random_cell / environment.GetSize();
+    x = random_cell % environment.GetSize();
+    unit.SetPosition(point(y, x));
+    pos = y * environment.GetSize() + x;
+    cells.erase(pos);
+
+    //Set RedHood Position
+    unit = environment.GetUnitWithID("RedHood");
+    random_cell = rand() % cells.size();
+    y = random_cell / environment.GetSize();
+    x = random_cell % environment.GetSize();
+    unit.SetPosition(point(y, x));
+    pos = y * environment.GetSize() + x;
+    cells.erase(pos);
 
 }
