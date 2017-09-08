@@ -11,13 +11,16 @@
 #include <vector>
 #include <unordered_map>
 #include <queue>
+#include <stack>
 #include "Graph.h"
 
 using namespace std;
 typedef pair<int,int> point;
 class AStar {
+private:
+    static stack<point> ConvertMapToStack(map<point,point>, point,point);
 public:
-    static map<point,point> FindPath(const Graph<pair<int,int>>&,pair<int,int>, pair<int,int>);
+    static stack<point> FindPath(const Graph<pair<int,int>>&,pair<int,int>, pair<int,int>);
 };
 
 

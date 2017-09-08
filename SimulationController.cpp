@@ -4,7 +4,9 @@
 
 #include <set>
 #include "SimulationController.h"
-
+#include <windows.h>
+#include <iostream> //TODO: DELETE
+using namespace std;
 void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) {
     //Create and initialize environment
     Environment environment(environment_size);
@@ -27,82 +29,114 @@ void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) 
     PlaceUnitsRandomly(environment);
     environment.UpdateUnitsPositions();
     environment.PrintCell();
+    cout<<endl<<endl<<endl;
+    //TEST
+    redHood.SetGoal(granny.GetPosition());
+    int delay = 0;
+    redHood.SetEnvironment(environment);
+    while(redHood.GetPosition()!=granny.GetPosition()){
+        redHood.MakeAction();
+        environment.UpdateUnitsPositions();
+        environment.PrintCell();
+        cout<<endl<<endl<<endl;
+        Sleep(2000);
+    }
+
+
+
 }
 
 void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     std::srand(time(NULL));
     typedef pair<int, int> point;
+    int size = environment.GetSize();
     int amount_of_cells = environment.GetSize() * environment.GetSize();
-    set<int> cells;  //Cells available for placement
+    map<int,point> cells;  //Cells available for placement
     for (int i = 0; i < amount_of_cells; i++) {
-        cells.insert(i);
+        int y = i / size; int x = i%size;
+        cells[i] = point(y,x);
     }
 
-    //Set Wolf Position
-    Unit unit = environment.GetUnitWithID("Wolf");
+    //Set RedHood Position
+    Unit* unit = environment.GetUnitWithID("RedHood");
+    int random_index = 0;
+    auto iter = cells.begin();
+    advance(iter, random_index);
+    int key = iter->first;
+    point p = iter->second;
+    unit->SetPosition(p);
+    cells.erase(key);
+    //Also need to array neighbors cells
+    cells.erase(key+1); cells.erase(key+size); cells.erase(key+size+1);
+    std::cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
-    int random_cell = rand() % cells.size();
-    int y = random_cell / environment.GetSize();
-    int x = random_cell % environment.GetSize();
-    unit.SetPosition(point(y, x));
+    //Set Wolf Position
+    unit = environment.GetUnitWithID("Wolf");
+    random_index = rand() % cells.size();
+    iter = cells.begin();
+    advance(iter, random_index);
+    key = iter->first;
+    p = iter->second;
+    unit->SetPosition(p);
+    cells.erase(key);
+    cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
     //Set Bear Position
     unit = environment.GetUnitWithID("Bear");
-    random_cell = rand() % cells.size();
-    y = random_cell / environment.GetSize();
-    x = random_cell % environment.GetSize();
-    unit.SetPosition(point(y, x));
+    random_index = rand() % cells.size();
+    iter = cells.begin();
+    advance(iter, random_index);
+    key = iter->first;
+    p = iter->second;
+    unit->SetPosition(p);
+    cells.erase(key);
+    cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
-    //Exclude Bear and Wolf Range
+    // Delete bear and wolf range from available cells
+    //Bear:
+    cells.erase(key - size);
+    cells.erase(key + size);
+    if (key % size != 0) {
+        cells.erase(key - 1);
+        cells.erase(key - size - 1);
+        cells.erase(key + size - 1);
+    }
+    if (key % environment.GetSize() != size - 1) {
+        cells.erase(key + 1);
+        cells.erase(key + size + 1);
+        cells.erase(key - size + 1);
+    }
     //Wolf:
     unit = environment.GetUnitWithID("Wolf");
-    int pos = unit.GetPosition().first * environment.GetSize() + unit.GetPosition().second;
-    cells.erase(pos);
-    cells.erase(pos - environment.GetSize());
-    cells.erase(pos + environment.GetSize()); // top and down cells
-    if (pos % environment.GetSize() != 0) cells.erase(pos - 1);
-    if (pos % environment.GetSize() != environment.GetSize() - 1) cells.erase(pos + 1); //left and right
+    key = unit->GetPosition().first * size + unit->GetPosition().second;
+    cells.erase(key - size);
+    cells.erase(key + size); // top and down cells
+    if (key % size != 0) cells.erase(key - 1);
+    if (key % size != size - 1) cells.erase(key + 1); //left and right
 
-    //Bear:
-    unit = environment.GetUnitWithID("Bear");
-    pos = unit.GetPosition().first * environment.GetSize() + unit.GetPosition().second;
-    cells.erase(pos);
-    cells.erase(pos - environment.GetSize());
-    cells.erase(pos + environment.GetSize());
-    if (pos % environment.GetSize() != 0) {
-        cells.erase(pos - 1);
-        cells.erase(pos - environment.GetSize() - 1);
-    }
-    if (pos % environment.GetSize() != environment.GetSize() - 1) {
-        cells.erase(pos + 1);
-        cells.erase(pos + environment.GetSize() + 1);
-    } //left and right
+
 
     //Set Granny Position
     unit = environment.GetUnitWithID("Granny");
-    random_cell = rand() % cells.size();
-    y = random_cell / environment.GetSize();
-    x = random_cell % environment.GetSize();
-    unit.SetPosition(point(y, x));
-    pos = y * environment.GetSize() + x;
-    cells.erase(pos);
+    random_index = rand() % cells.size();
+    iter = cells.begin();
+    advance(iter, random_index);
+    key = iter->first;
+    p = iter->second;
+    unit->SetPosition(p);
+    cells.erase(key);
+    std::cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
     //Set Cutter Position
     unit = environment.GetUnitWithID("Cutter");
-    random_cell = rand() % cells.size();
-    y = random_cell / environment.GetSize();
-    x = random_cell % environment.GetSize();
-    unit.SetPosition(point(y, x));
-    pos = y * environment.GetSize() + x;
-    cells.erase(pos);
+    random_index = rand() % cells.size();
+    iter = cells.begin();
+    advance(iter, random_index);
+    key = iter->first;
+    p = iter->second;
+    unit->SetPosition(p);
+    cells.erase(key);
+    std::cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
-    //Set RedHood Position
-    unit = environment.GetUnitWithID("RedHood");
-    random_cell = rand() % cells.size();
-    y = random_cell / environment.GetSize();
-    x = random_cell % environment.GetSize();
-    unit.SetPosition(point(y, x));
-    pos = y * environment.GetSize() + x;
-    cells.erase(pos);
 
 }

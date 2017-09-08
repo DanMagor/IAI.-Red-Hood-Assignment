@@ -6,7 +6,7 @@
 #include "AStar.h"
 
 typedef pair<int,int> point;
-map<point,point> AStar::FindPath(const Graph<pair<int,int>> & graph, point start, point goal) {
+stack<point> AStar::FindPath(const Graph<pair<int,int>> & graph, point start, point goal) {
     queue<point> frontier;
     frontier.push(start);
     map<point,int> cost_so_far;
@@ -30,7 +30,22 @@ map<point,point> AStar::FindPath(const Graph<pair<int,int>> & graph, point start
         }
         frontier.pop();
     }
-    if (isFindPath)return came_from;
-    else return map<point,point>();
+    if (isFindPath)return ConvertMapToStack(came_from,start,goal);
+    else{
+        stack<point> result;
+        return result;
+    }
 
+}
+
+stack<point> AStar::ConvertMapToStack(map<point, point> path, point start, point goal) {
+    point current = goal;
+    stack<point> result;
+    result.push(goal);
+    while(path[current]!=start){
+        result.push(current);
+        current = path[current];
+    }
+    result.push(current);
+    return result;
 }

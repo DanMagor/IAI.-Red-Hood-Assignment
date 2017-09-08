@@ -31,8 +31,9 @@ public:
     pair<int,int> GetPosition();
 
     //Unit Behavior
-    virtual void SetPosition(pair<int,int>);
-    virtual void SetPosition(int,int);
+    void SetPosition(pair<int,int>);
+    void SetPosition(int,int);
+    virtual void MakeAction();
 
     virtual void CheckArea();
 

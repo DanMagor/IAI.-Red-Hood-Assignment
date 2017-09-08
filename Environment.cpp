@@ -82,14 +82,15 @@ void Environment::PrintCell() {
     }
 }
 
- const Unit & Environment::GetUnitWithID(string ID)const {
-     if (units_.find(ID) == units_.end()) throw std::invalid_argument("No unit with such ID");
-    Unit a("DEBUG");
-     return a;
-}
+
 
 int Environment::GetSize() {
     return size_;
+}
+
+Unit *Environment::GetUnitWithID(string ID) {
+    if (units_.find(ID) == units_.end()) throw std::invalid_argument("No unit with such ID");
+    return units_[ID];
 }
 
 

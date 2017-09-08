@@ -34,7 +34,7 @@ public:
     int GetSize();     //return environment size (width and length)
     void PrintCell();
     const Unit& GetUnitFromCell(const Point &);
-    const Unit& GetUnitWithID(string) const;   //return a reference of unit in environment with specific ID
+    Unit* GetUnitWithID(string);   //return a reference of unit in environment with specific ID
     bool IsEmptyCell(const Point &);
 
     //Unit interaction

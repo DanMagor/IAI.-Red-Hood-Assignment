@@ -5,24 +5,32 @@
 #ifndef ASSIGNMENT1_REDHOOD_H
 #define ASSIGNMENT1_REDHOOD_H
 #include "Unit.h"
-#include <list>
+#include <stack>
 #include "Environment.h"
-
+#include "AStar.h"
+#include "Graph.h"
+typedef pair<int,int> point;
 class RedHood: public Unit {
 private:
-    Unit ***environment_;
-    Point goal;
+    //Properties:
+    Environment environment_;
+    Graph<point> graph_environment_;
+    point goal_;
+    stack<point> path_;
+    //Local methods:
+    void MakeGraphFromEnvironment();
 public:
     //Initialization
     RedHood(string);
-    RedHood(pair<int,int>);
-    void SetCutterPositions(pair<int,int>,pair<int,int>);
-    void SetEnvironment(const Environment &,int);  //Set available environment information for RedHood
-
-    //Environment information
-    void FindPath();
+    RedHood(point);
+    void SetGoal(point);
+    void SetCutterPositions(point,point);
+    void SetEnvironment(Environment &);  //Set available environment information for RedHood
 
 
+
+
+    void MakeAction();
 };
 
 

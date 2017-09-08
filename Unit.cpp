@@ -42,6 +42,10 @@ void Unit::SetPosition(pair<int,int> position) {
     position_ = position;
 }
 
+void Unit::MakeAction() {
+
+}
+
 
 
 
