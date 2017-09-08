@@ -6,29 +6,18 @@
 #define ASSIGNMENT1_ASTAR_H
 
 
+#include <iostream>
 #include <map>
 #include <vector>
 #include <unordered_map>
 #include <queue>
-
-#include "Point.h"
+#include "Graph.h"
 
 using namespace std;
-
-template<typename L>
-struct SimpleGraph{
-    typedef L Location;
-    typedef typename vector<Location>::iterator iterator;
-    unordered_map<Location, vector<Location> > edges;
-    inline const vector<Location> neighbors(Location id){
-        return edges[id];
-    }
-};
-
-
+typedef pair<int,int> point;
 class AStar {
 public:
-    static Point* FindPath();
+    static map<point,point> FindPath(const Graph<pair<int,int>>&,pair<int,int>, pair<int,int>);
 };
 
 
