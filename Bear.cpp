@@ -7,3 +7,7 @@
 Bear::Bear(const string &ID) : Unit(ID){
     symbol_ = 'B';
 }
+
+Bear::~Bear() {
+
+}

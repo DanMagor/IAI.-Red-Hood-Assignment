@@ -52,12 +52,24 @@ public:
 
     vector<V> GetNeighbors(pair<int, int> v) const {  //return Neighbors of vertex V
         vector<V> neighbors;
-        for (typename Graph::vertex::edge t:vertices.find(v)->second->edges){
+        for (typename Graph::vertex::edge t:vertices.find(v)->second->edges) {
             neighbors.push_back(t.second->name);
         }
         return neighbors;
     }
 
+    void DeleteVertex(V deleted_vertex) {
+        for (auto v: vertices) {
+            int i = 0;
+            for (auto e: v.second->edges){
+                if(e.second->name == deleted_vertex){
+                    v.second->edges.erase(v.second->edges.begin()+i);
+                }
+                i++;
+            }
+        }
+        vertices.erase(deleted_vertex);
+    }
 
     vertex *&GetVertex(V);  //TODO: Implement
 

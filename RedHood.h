@@ -13,24 +13,30 @@ typedef pair<int,int> point;
 class RedHood: public Unit {
 private:
     //Properties:
-    Environment environment_;
+    Environment *environment_;
     Graph<point> graph_environment_;
     point goal_;
+    bool is_dead_ = false;
     stack<point> path_;
+    vector<point> wolf_detection_cells;
+    vector<point> bear_detection_cells;
     //Local methods:
     void MakeGraphFromEnvironment();
+    void CheckArea();
+    void UpdateWolfDetection();
+    void UpdateBearDetection();
 public:
     //Initialization
     RedHood(string);
     RedHood(point);
+    ~RedHood();
     void SetGoal(point);
     void SetCutterPositions(point,point);
     void SetEnvironment(Environment &);  //Set available environment information for RedHood
-
-
-
-
     void MakeAction();
+
+    void Die();
+    bool IsDead();
 };
 
 

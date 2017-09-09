@@ -10,3 +10,7 @@ Granny::Granny(string ID):Unit(ID){symbol_='G';}
 
 Granny::Granny(pair<int,int> position):Unit(position){symbol_='G';}
 
+Granny::~Granny() {
+
+}
+

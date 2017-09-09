@@ -7,3 +7,7 @@
 Cutter::Cutter(const string &ID) : Unit(ID){
     symbol_ = 'C';
 }
+
+Cutter::~Cutter() {
+
+}

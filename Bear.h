@@ -11,6 +11,8 @@
 class Bear : public Unit {
 public:
     Bear(const string &);
+    ~Bear();
+
 
 };
 

@@ -29,17 +29,19 @@ void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) 
     PlaceUnitsRandomly(environment);
     environment.UpdateUnitsPositions();
     environment.PrintCell();
-    cout<<endl<<endl<<endl;
     //TEST
+
     redHood.SetGoal(granny.GetPosition());
-    int delay = 0;
+
+    int delay = 100;
     redHood.SetEnvironment(environment);
-    while(redHood.GetPosition()!=granny.GetPosition()){
+    while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
+        system("CLS");
         redHood.MakeAction();
         environment.UpdateUnitsPositions();
         environment.PrintCell();
-        cout<<endl<<endl<<endl;
-        Sleep(2000);
+        cout<<endl;
+        Sleep(delay);
     }
 
 
@@ -68,7 +70,6 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     cells.erase(key);
     //Also need to array neighbors cells
     cells.erase(key+1); cells.erase(key+size); cells.erase(key+size+1);
-    std::cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
     //Set Wolf Position
     unit = environment.GetUnitWithID("Wolf");
@@ -79,7 +80,6 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     p = iter->second;
     unit->SetPosition(p);
     cells.erase(key);
-    cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
     //Set Bear Position
     unit = environment.GetUnitWithID("Bear");
@@ -90,7 +90,7 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     p = iter->second;
     unit->SetPosition(p);
     cells.erase(key);
-    cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
+
 
     // Delete bear and wolf range from available cells
     //Bear:
@@ -125,7 +125,6 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     p = iter->second;
     unit->SetPosition(p);
     cells.erase(key);
-    std::cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
     //Set Cutter Position
     unit = environment.GetUnitWithID("Cutter");
@@ -136,7 +135,6 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     p = iter->second;
     unit->SetPosition(p);
     cells.erase(key);
-    std::cout<<unit->GetPosition().first<<" "<<unit->GetPosition().second<<endl;
 
 
 }

@@ -12,6 +12,7 @@ class Granny: public Unit {
 public:
     Granny(string);
     Granny(pair<int,int>);
+    ~Granny();
 
 };
 

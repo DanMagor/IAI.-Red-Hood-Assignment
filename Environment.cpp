@@ -7,6 +7,7 @@
 //#TODO: DELETE INCLUDE iostream IF NEED NOT
 #include <iostream>
 
+
 //Default Constructor. Lattice has size 9x9
 Environment::Environment() : size_(DEFAULT_SIZE) {
 
@@ -22,7 +23,8 @@ Environment::Environment() : size_(DEFAULT_SIZE) {
 
 
 }
-Environment::Environment(int size):size_(size) {
+
+Environment::Environment(int size) : size_(size) {
     lattice = new Unit **[size_];
 
     for (int i = 0; i < size_; ++i)
@@ -35,9 +37,13 @@ Environment::Environment(int size):size_(size) {
 }
 
 Environment::~Environment() {
-    for (int i = 0; i < size_; ++i)
-        delete[] lattice[i];
-    delete[] lattice;
+    if (lattice!= nullptr) {
+        for (int i = 0; i < size_; ++i)
+            if (lattice[i] != nullptr)
+                delete lattice[i];
+        if (lattice != nullptr)
+            delete[] lattice;
+    }
 }
 
 
@@ -47,6 +53,9 @@ void Environment::AddUnit(Unit &unit) {
 }
 
 void Environment::UpdateUnitsPositions() {
+    for (int i = 0; i < size_; ++i)
+        for (int j = 0; j < size_; ++j)
+            lattice[i][j] = nullptr;
     for (auto u:units_) {
         Unit *unit = u.second;
         int x = unit->GetPosition().second;
@@ -66,22 +75,18 @@ const Unit &Environment::GetUnitFromCell(const Point &point) {
 }
 
 
-
-
-
 //Debug Function #TODO: DELETE IF NEED NOT
 void Environment::PrintCell() {
 
     for (int i = 0; i < size_; ++i) {
         for (int j = 0; j < size_; ++j) {
             if (lattice[i][j] == nullptr) std::cout << "_";
-            else cout<<lattice[i][j]->GetSymbol();
+            else cout << lattice[i][j]->GetSymbol();
             std::cout << " ";
         }
         std::cout << std::endl;
     }
 }
-
 
 
 int Environment::GetSize() {
@@ -91,6 +96,64 @@ int Environment::GetSize() {
 Unit *Environment::GetUnitWithID(string ID) {
     if (units_.find(ID) == units_.end()) throw std::invalid_argument("No unit with such ID");
     return units_[ID];
+}
+
+bool Environment::IsWolfDetection(point p) {
+    Unit *wolf = GetUnitWithID("Wolf");
+    int y = wolf->GetPosition().first;
+    int x = wolf->GetPosition().second;
+    point temp(y - 1, x);
+    if (p == temp)
+        return true;
+    temp = point(y + 1, x);
+    if (p == temp)
+        return true;
+    temp = point(y, x + 1);
+    if (p == temp)
+        return true;
+    temp = point(y, x - 1);
+    if (p == temp)
+        return true;
+    temp = point(y, x);
+    if (p == temp)
+        return true;
+    return false;
+
+
+}
+
+bool Environment::IsBearDetection(point p) {
+    Unit *bear = GetUnitWithID("Bear");
+    int y = bear->GetPosition().first;
+    int x = bear->GetPosition().second;
+    point temp(y - 1, x);
+    if (p == temp)
+        return true;
+    temp = point(y + 1, x);
+    if (p == temp)
+        return true;
+    temp = point(y, x + 1);
+    if (p == temp)
+        return true;
+    temp = point(y, x - 1);
+    if (p == temp)
+        return true;
+    temp = point(y + 1, x + 1);
+    if (p == temp)
+        return true;
+    temp = point(y + 1, x - 1);
+    if (p == temp)
+        return true;
+    temp = point(y - 1, x + 1);
+    if (p == temp)
+        return true;
+    temp = point(y - 1, x - 1);
+    if (p == temp)
+        return true;
+    temp = point(y,x);
+    if (p==temp)
+        return true;
+    return false;
 }
 
 

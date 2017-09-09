@@ -1,20 +1,16 @@
 #include <iostream>
 #include "Environment.h"
-#include "RedHood.h"
-#include "Granny.h"
-#include "Graph.h"
-#include "AStar.h"
 #include "SimulationController.h"
-#include <stack>
 
+#define DEFAULT_SIZE 9
 using namespace std;
 
 int main() {
 
 
-
-   SimulationController::StartSimulation(9);
-
+    for(int i = 0; i<100; i++) {
+        SimulationController::StartSimulation(DEFAULT_SIZE);
+    }
 
 
 

@@ -24,7 +24,7 @@ private:
     Unit ***lattice; //two dimensional dynamic array with pointers on Unit
     map<string, Unit*> units_;
 public:
-
+    typedef pair<int,int> point;
     //Initialization
     Environment();
     explicit Environment(int);  // constructor for non default lattice
@@ -35,7 +35,8 @@ public:
     void PrintCell();
     const Unit& GetUnitFromCell(const Point &);
     Unit* GetUnitWithID(string);   //return a reference of unit in environment with specific ID
-    bool IsEmptyCell(const Point &);
+    bool IsWolfDetection(point);
+    bool IsBearDetection(point);
 
     //Unit interaction
     void AddUnit(Unit&);   //add Unit in environment

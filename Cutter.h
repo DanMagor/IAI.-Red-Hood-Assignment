@@ -11,6 +11,7 @@
 class Cutter: public Unit {
 public:
     Cutter(const string &);
+    ~Cutter();
 
 };
 
