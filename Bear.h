@@ -7,12 +7,19 @@
 
 
 #include "Unit.h"
+#include "Environment.h"
 
 class Bear : public Unit {
+private:
+Environment *environment_;
 public:
     Bear(const string &);
     ~Bear();
 
+
+    void MakeAction();
+    void CheckArea();
+    void SetEnvironment(Environment &);
 
 };
 

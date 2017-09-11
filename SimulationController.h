@@ -22,7 +22,7 @@
 
 class SimulationController {
 public:
-    static void StartSimulation(int);
+    static void StartAStarSimulation(int,int);
 
 private:
     static void PlaceUnitsRandomly(Environment&);

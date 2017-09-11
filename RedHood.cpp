@@ -22,9 +22,8 @@ void RedHood::SetEnvironment(Environment &environment) {
 void RedHood::MakeAction() {
     UpdateWolfDetection();
     UpdateBearDetection();
-    if(CheckArea()){
+    CheckArea();
     path_ = AStar::FindPath(graph_environment_, position_, goal_);
-    }
     if (path_.empty()) Die();
     else {
         SetPosition(path_.top());
@@ -57,7 +56,7 @@ void RedHood::SetGoal(point goal) {
 
 }
 
-bool RedHood::CheckArea() {
+void RedHood::CheckArea() {
 
     for (auto c:wolf_detection_cells) {
         if (environment_->IsWolfDetection(c)) {
@@ -91,7 +90,7 @@ bool RedHood::CheckArea() {
 
 
     }
-    return true;
+
 }
 
 
@@ -142,6 +141,10 @@ void RedHood::Die() {
 
 RedHood::~RedHood() {
 
+}
+
+int RedHood::GetLife() {
+    return life_;
 }
 
 

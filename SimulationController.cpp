@@ -7,7 +7,7 @@
 #include <windows.h>
 #include <iostream> //TODO: DELETE
 using namespace std;
-void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) {
+void SimulationController::StartAStarSimulation(int environment_size, int delay) {
     //Create and initialize environment
     Environment environment(environment_size);
 
@@ -28,26 +28,21 @@ void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) 
     // Place Unit
     PlaceUnitsRandomly(environment);
     environment.UpdateUnitsPositions();
-    environment.PrintCell();
-    //TEST
-
-
-
     environment.UpdateUnitsPositions();
     redHood.SetGoal(granny.GetPosition());
-    int delay = 200;
     redHood.SetEnvironment(environment);
+    wolf.SetEnvironment(environment);
+    bear.SetEnvironment(environment);
 
     while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
         system("CLS");
         redHood.MakeAction();
+        wolf.MakeAction();
+        bear.MakeAction();
         environment.UpdateUnitsPositions();
-        environment.PrintCell();
-        cout<<endl;
+        if (delay!=0) {environment.PrintCell();cout<<endl;}
         Sleep(delay);
     }
-    if (redHood.IsDead()) {cout<<endl<<"DIIIIIE";
-    Sleep(2000);}
 
 
 

@@ -20,9 +20,10 @@ private:
     stack<point> path_;
     vector<point> wolf_detection_cells;
     vector<point> bear_detection_cells;
+    int life_=6;
     //Local methods:
     void MakeGraphFromEnvironment();
-    bool CheckArea();
+    void CheckArea();
     void UpdateWolfDetection();
     void UpdateBearDetection();
 public:
@@ -34,6 +35,8 @@ public:
     void SetCutterPositions(point,point);
     void SetEnvironment(Environment &);  //Set available environment information for RedHood
     void MakeAction();
+    int GetLife() override;
+    void SetLife();
 
     void Die();
     bool IsDead();

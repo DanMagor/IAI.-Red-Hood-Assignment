@@ -29,3 +29,19 @@ void Wolf::UpdateDetection() {
 Wolf::~Wolf() {
 
 }
+
+void Wolf::SetEnvironment(Environment &environment) {
+    environment_ = &environment;
+}
+
+
+void Wolf::CheckArea() {
+    Unit *redhood = environment_->GetUnitWithID("RedHood");
+    point pos = redhood->GetPosition();
+    if (environment_->IsWolfDetection(pos)){
+        redhood->SetLife(0);
+    }
+}
+void Wolf::MakeAction() {
+    CheckArea();
+}

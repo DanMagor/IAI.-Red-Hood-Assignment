@@ -7,16 +7,23 @@
 
 
 #include "Unit.h"
+#include "Environment.h"
+
 typedef pair<int,int> point;
 class Wolf : public Unit{
 private:
     vector<point>detection_cells;
     void UpdateDetection();
+    Environment *environment_;
 public:
     Wolf(const string &);
     ~Wolf();
-
+    void SetEnvironment(Environment &);
     void SetPosition(point position);
+
+    void CheckArea();
+
+    void MakeAction();
 };
 
 

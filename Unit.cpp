@@ -5,7 +5,8 @@
 #include "Unit.h"
 
 
-Unit::Unit(pair<int,int> position) : position_(position) {}
+Unit::Unit(pair<int, int> position) : position_(position) {}
+
 Unit::Unit(string id) {
     ID_ = id;
 }
@@ -21,16 +22,16 @@ string Unit::GetID() {
 
 
 void Unit::SetPosition(int y, int x) {
-    position_ = pair<int,int>(y,x);
+    position_ = pair<int, int>(y, x);
 }
 
-pair<int,int> Unit::GetPosition() {
+pair<int, int> Unit::GetPosition() {
     return position_;
 }
 
 Unit::~Unit() {}
 
-bool Unit::CheckArea() {
+void Unit::CheckArea() {
 
 }
 
@@ -38,12 +39,24 @@ char Unit::GetSymbol() {
     return symbol_;
 }
 
-void Unit::SetPosition(pair<int,int> position) {
+void Unit::SetPosition(pair<int, int> position) {
     position_ = position;
 }
 
 void Unit::MakeAction() {
 
+}
+
+void Unit::Die() {
+
+}
+
+int Unit::GetLife() {
+    return life_;
+}
+
+void Unit::SetLife(int life) {
+    life_ = life;
 }
 
 
