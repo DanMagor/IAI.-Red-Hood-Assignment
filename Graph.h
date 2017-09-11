@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <map>
+#include <c++/4.8.3/iostream>
 
 
 using namespace std;
@@ -50,7 +51,7 @@ public:
         return vertices;
     }
 
-    vector<V> GetNeighbors(pair<int, int> v) const {  //return Neighbors of vertex V
+    vector<V> GetNeighbors(pair<int, int> v)  {  //return Neighbors of vertex V
         vector<V> neighbors;
         for (typename Graph::vertex::edge t:vertices.find(v)->second->edges) {
             neighbors.push_back(t.second->name);
@@ -69,6 +70,25 @@ public:
             }
         }
         vertices.erase(deleted_vertex);
+    }
+
+    double GetEdgeWeight(pair<int, int> v1, pair<int, int> v2) {
+        for(auto e: vertices[v1]->edges){
+            if (e.second->name == v2){
+                return e.first;
+            }
+        }
+    }
+
+    void SetEdgeWeight(V v1, V v2, E weight){
+        if (vertices.find(v1) != vertices.end()){
+            for(auto &e: vertices[v1]->edges){
+                if (e.second->name == v2){
+                    e.first = weight;
+                }
+            }
+        }
+
     }
 
     vertex *&GetVertex(V);  //TODO: Implement

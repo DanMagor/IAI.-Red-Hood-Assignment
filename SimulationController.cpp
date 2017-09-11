@@ -31,10 +31,13 @@ void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) 
     environment.PrintCell();
     //TEST
 
-    redHood.SetGoal(granny.GetPosition());
 
-    int delay = 100;
+
+    environment.UpdateUnitsPositions();
+    redHood.SetGoal(granny.GetPosition());
+    int delay = 200;
     redHood.SetEnvironment(environment);
+
     while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
         system("CLS");
         redHood.MakeAction();
@@ -43,6 +46,8 @@ void SimulationController::StartSimulation(int environment_size = DEFAULT_SIZE) 
         cout<<endl;
         Sleep(delay);
     }
+    if (redHood.IsDead()) {cout<<endl<<"DIIIIIE";
+    Sleep(2000);}
 
 
 

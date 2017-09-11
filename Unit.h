@@ -35,7 +35,7 @@ public:
     void SetPosition(int,int);
     virtual void MakeAction();
 
-    virtual void CheckArea();
+    virtual bool CheckArea();
 
     //Destructor
     ~Unit();

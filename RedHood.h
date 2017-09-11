@@ -22,7 +22,7 @@ private:
     vector<point> bear_detection_cells;
     //Local methods:
     void MakeGraphFromEnvironment();
-    void CheckArea();
+    bool CheckArea();
     void UpdateWolfDetection();
     void UpdateBearDetection();
 public:

@@ -7,7 +7,7 @@
 
 RedHood::RedHood(string ID) : Unit(ID) {
     symbol_ = 'R';
-    position_ = point(0,0);
+    position_ = point(0, 0);
     //set wolf detection cells:
 
 }
@@ -22,8 +22,9 @@ void RedHood::SetEnvironment(Environment &environment) {
 void RedHood::MakeAction() {
     UpdateWolfDetection();
     UpdateBearDetection();
-    CheckArea();
+    if(CheckArea()){
     path_ = AStar::FindPath(graph_environment_, position_, goal_);
+    }
     if (path_.empty()) Die();
     else {
         SetPosition(path_.top());
@@ -56,51 +57,78 @@ void RedHood::SetGoal(point goal) {
 
 }
 
-void RedHood::CheckArea() {
-    for(auto c:wolf_detection_cells){
-        if(environment_->IsWolfDetection(c)){
-            graph_environment_.DeleteVertex(c);
-        }
-    for (auto c:bear_detection_cells){
-        if(environment_->IsBearDetection(c)){
-            graph_environment_.DeleteVertex(c);
-        }
-    }
-    }
+bool RedHood::CheckArea() {
 
+    for (auto c:wolf_detection_cells) {
+        if (environment_->IsWolfDetection(c)) {
+            graph_environment_.DeleteVertex(c);
+
+        }
+    }
+    for (auto c:bear_detection_cells) {
+
+
+        if (environment_->IsBearDetection(c)) {
+            int y = c.first, x = c.second;
+            point temp = point(y - 1, x);
+            graph_environment_.SetEdgeWeight(temp, c, 100);
+
+
+            temp = point(y + 1, x);
+            graph_environment_.SetEdgeWeight(temp, c, 100);
+
+
+            temp = point(y, x - 1);
+            graph_environment_.SetEdgeWeight(temp, c, 100);
+
+
+            temp = point(y, x + 1);
+            graph_environment_.SetEdgeWeight(temp, c, 100);
+
+
+
+        }
+
+
+    }
+    return true;
 }
+
+
 
 void RedHood::UpdateWolfDetection() {
     wolf_detection_cells.clear();
-    int y = position_.first; int x = position_.second;
-    point temp(y-1,x);
+    int y = position_.first;
+    int x = position_.second;
+    point temp(y - 1, x);
     wolf_detection_cells.push_back(temp);
-    temp = point(y-2,x);
+    temp = point(y - 2, x);
     wolf_detection_cells.push_back(temp);
-    temp = point(y+1,x);
+    temp = point(y + 1, x);
     wolf_detection_cells.push_back(temp);
-    temp = point(y+2,x);
+    temp = point(y + 2, x);
     wolf_detection_cells.push_back(temp);
-    temp = point(y,x+1);
+    temp = point(y, x + 1);
     wolf_detection_cells.push_back(temp);
-    temp = point(y,x+2);
+    temp = point(y, x + 2);
     wolf_detection_cells.push_back(temp);
-    temp = point(y,x-1);
+    temp = point(y, x - 1);
     wolf_detection_cells.push_back(temp);
-    temp = point(y,x-2);
+    temp = point(y, x - 2);
     wolf_detection_cells.push_back(temp);
 }
 
-void RedHood::UpdateBearDetection(){
+void RedHood::UpdateBearDetection() {
     bear_detection_cells.clear();
-    int y = position_.first; int x = position_.second;
-    point temp(y-1,x);
+    int y = position_.first;
+    int x = position_.second;
+    point temp(y - 1, x);
     bear_detection_cells.push_back(temp);
-    temp = point(y+1,x);
+    temp = point(y + 1, x);
     bear_detection_cells.push_back(temp);
-    temp = point(y,x+1);
+    temp = point(y, x + 1);
     bear_detection_cells.push_back(temp);
-    temp = point(y,x-1);
+    temp = point(y, x - 1);
     bear_detection_cells.push_back(temp);
 }
 

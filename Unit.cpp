@@ -30,7 +30,7 @@ pair<int,int> Unit::GetPosition() {
 
 Unit::~Unit() {}
 
-void Unit::CheckArea() {
+bool Unit::CheckArea() {
 
 }
 
