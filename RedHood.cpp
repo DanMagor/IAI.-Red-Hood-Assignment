@@ -31,6 +31,18 @@ void RedHood::MakeAction() {
     }
 
 }
+void RedHood::MakeActionBacktracking(){
+    UpdateWolfDetection();
+    UpdateBearDetection();
+    CheckArea();
+    path_queue = Backtracking::FindPath(graph_environment_, position_, goal_);
+    if (path_queue.empty()) Die();
+    else {
+        cout<<path_queue.front().first<<path_queue.front().second;
+        SetPosition(path_queue.front());
+        path_.pop();
+    }
+}
 
 void RedHood::MakeGraphFromEnvironment() {
     Graph<point> graph;

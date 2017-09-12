@@ -90,6 +90,9 @@ public:
         }
 
     }
+    bool ContainsVertex(V v){
+        return !(vertices.find(v)==vertices.end());
+    }
 
     vertex *&GetVertex(V);  //TODO: Implement
 

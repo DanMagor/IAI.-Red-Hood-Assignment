@@ -7,7 +7,7 @@
 
 
 #include "Unit.h"
-
+typedef pair<int,int> point;
 class Granny: public Unit {
 public:
     Granny(string);

@@ -17,7 +17,7 @@ int main() {
     delay*=1000;
     const clock_t begin_time = clock();
     for (int i = 0; i < n; i++) {
-        SimulationController::StartAStarSimulation(DEFAULT_SIZE, delay);
+        SimulationController::StartBacktrackingSimulation(DEFAULT_SIZE, delay);
     }
     cout<<"Average amount of time for A* algorithm: "<<float(clock() - begin_time)/CLOCKS_PER_SEC/n<<endl;
 

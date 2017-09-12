@@ -6,8 +6,10 @@
 #define ASSIGNMENT1_REDHOOD_H
 #include "Unit.h"
 #include <stack>
+#include <queue>
 #include "Environment.h"
 #include "AStar.h"
+#include "Backtracking.h"
 #include "Graph.h"
 typedef pair<int,int> point;
 class RedHood: public Unit {
@@ -18,6 +20,7 @@ private:
     point goal_;
     bool is_dead_ = false;
     stack<point> path_;
+    queue<point> path_queue;
     vector<point> wolf_detection_cells;
     vector<point> bear_detection_cells;
     int life_=6;
@@ -35,6 +38,7 @@ public:
     void SetCutterPositions(point,point);
     void SetEnvironment(Environment &);  //Set available environment information for RedHood
     void MakeAction();
+    void MakeActionBacktracking();
     int GetLife() override;
     void SetLife();
 
