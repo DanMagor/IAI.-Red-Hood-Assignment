@@ -1,4 +1,5 @@
 #include <iostream>
+#include <synchapi.h>
 #include "Environment.h"
 #include "SimulationController.h"
 
@@ -20,7 +21,7 @@ int main() {
         SimulationController::StartBacktrackingSimulation(DEFAULT_SIZE, delay);
     }
     cout<<"Average amount of time for A* algorithm: "<<float(clock() - begin_time)/CLOCKS_PER_SEC/n<<endl;
-
+    Sleep(3000);
 
     return 0;
 }

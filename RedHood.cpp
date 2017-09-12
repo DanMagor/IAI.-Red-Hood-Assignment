@@ -23,7 +23,8 @@ void RedHood::MakeAction() {
     UpdateWolfDetection();
     UpdateBearDetection();
     CheckArea();
-    path_ = AStar::FindPath(graph_environment_, position_, goal_);
+    if (path_.empty()){
+    path_ = AStar::FindPath(graph_environment_, position_, goal_);}
     if (path_.empty()) Die();
     else {
         SetPosition(path_.top());
@@ -35,12 +36,15 @@ void RedHood::MakeActionBacktracking(){
     UpdateWolfDetection();
     UpdateBearDetection();
     CheckArea();
-    path_queue = Backtracking::FindPath(graph_environment_, position_, goal_);
-    if (path_queue.empty()) Die();
+    if (path_backtracking_.empty()){
+    path_backtracking_ = Backtracking::FindPath(graph_environment_, position_, goal_);}
+    if (path_backtracking_.empty()) Die();
     else {
-        cout<<path_queue.front().first<<path_queue.front().second;
-        SetPosition(path_queue.front());
-        path_.pop();
+        for(auto v: path_backtracking_){
+            cout<<v.first<<" "<<v.second<<endl;
+        }
+        SetPosition(path_backtracking_.front());
+        path_backtracking_.erase(path_backtracking_.begin());
     }
 }
 
@@ -73,6 +77,8 @@ void RedHood::CheckArea() {
     for (auto c:wolf_detection_cells) {
         if (environment_->IsWolfDetection(c)) {
             graph_environment_.DeleteVertex(c);
+            path_ = stack<point>();
+            path_backtracking_.clear();
 
         }
     }
@@ -95,6 +101,8 @@ void RedHood::CheckArea() {
 
             temp = point(y, x + 1);
             graph_environment_.SetEdgeWeight(temp, c, 100);
+            path_ = stack<point>();
+            path_backtracking_.clear();
 
 
 

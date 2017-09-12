@@ -2,52 +2,53 @@
 // Created by DanMagor on 12.09.2017.
 //
 
-#include <queue>
+
+#include <algorithm>
 #include "Backtracking.h"
 
-int i = 0;
 
-queue<point> Backtracking::FindPath(Graph<point> &graph, point start, point goal) {
-    map<int, point> path;
-    queue<point> q;
-    if (!Solve(graph, start, goal, path)) {
-        while (!path.empty()) {
-            i = 0;
-            if (path.find(i) != path.end()) {
-                q.push(path[i]);
-                path.erase(i);
-            }
-            i++;
+point goal_;
+map<point, int> marked;
+map<point, point> come_from;
+
+vector<point> Backtracking::FindPath(Graph<point> &graph, point start, point goal) {
+    goal_ = goal;
+
+    if(Solve(graph,start)) {
+        vector<point> result;
+        for(auto v: marked){
+
+            if (v.second == 1)
+                result.push_back(v.first);
         }
+        result.erase(result.begin());
+        return result;
     }
-    return q;
+    return vector<point>();
+
+
 
 }
 
-bool Backtracking::Solve(Graph<point> &graph, point start, point goal, map<int, point> &path) {
-    if (start == goal) {
-        path[i] = start;
+bool Backtracking::Solve(Graph<point> &graph, point from) {
+
+    if(from == goal_){
+        marked[from] = 1;
         return true;
     }
-    if (graph.ContainsVertex(start)) {
-        if (path.find(i) != path.end())
-            return false;
-        path[i] = start;
-        point temp = point(start.first - 1, start.second);
-        if (Solve(graph, temp, goal, path)) return true;
 
-        temp = point(start.first, start.second - 1);
-        if (Solve(graph, temp, goal, path)) return true;
-
-        temp = point(start.first + 1, start.second);
-        if (Solve(graph, temp, goal, path)) return true;
-
-        temp = point(start.first, start.second + 1);
-        if (Solve(graph, temp, goal, path)) return true;
-
-        path.erase(i);
+    if (from.first<9 && from.second<9){
+        marked[from] = 1;
+        point temp = point(from.first,from.second+1);
+        if (Solve(graph,temp)) return true;
+        temp = point(from.first+1,from.second);
+        if (Solve(graph,temp)) return true;
+        marked[from] = 0;
         return false;
     }
+
+    return false;
+
 
 }
 

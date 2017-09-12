@@ -7,12 +7,14 @@
 
 #include <stack>
 #include "Graph.h"
+#include <vector>
+#include <algorithm>
 typedef pair<int,int> point;
 class Backtracking {
 private:
-    static bool Solve(Graph<point>&,point,point,map<int,point>&);
+    static bool Solve(Graph<point>&,point);
 public:
-    static queue<point> FindPath(Graph<point>&,point,point);
+    static vector<point> FindPath(Graph<point>&,point,point);
 
 };
 
