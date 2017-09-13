@@ -18,7 +18,7 @@ Bear::~Bear() {
 
 }
 
-void Bear::CheckArea() {
+bool Bear::CheckArea() {
     Unit::CheckArea();
     Unit *redhood = environment_->GetUnitWithID("RedHood");
     point pos = redhood->GetPosition();

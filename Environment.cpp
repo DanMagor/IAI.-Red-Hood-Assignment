@@ -65,14 +65,7 @@ void Environment::UpdateUnitsPositions() {
     }
 }
 
-const Unit &Environment::GetUnitFromCell(const Point &point) {
-    int x = point.X();
-    int y = point.Y();
-    if (y > size_ - 1 || x > size_ - 1)
-        throw std::out_of_range("Unit place out of range");
-    return *lattice[y][x];
 
-}
 
 
 //Debug Function #TODO: DELETE IF NEED NOT

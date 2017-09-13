@@ -23,10 +23,10 @@ private:
     stack<point> path_backtracking_;
     vector<point> wolf_detection_cells;
     vector<point> bear_detection_cells;
-    int life_=6;
+    int life_;
     //Local methods:
     void MakeGraphFromEnvironment();
-    void CheckArea();
+    bool CheckArea() override;
     void UpdateWolfDetection();
     void UpdateBearDetection();
 public:
@@ -40,7 +40,7 @@ public:
     void MakeAction();
     void MakeActionBacktracking();
     int GetLife() override;
-    void SetLife();
+    void SetLife(int);
 
     void Die();
     bool IsDead();

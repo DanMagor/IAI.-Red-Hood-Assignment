@@ -5,9 +5,52 @@
 #include <set>
 #include "SimulationController.h"
 #include <windows.h>
-#include <iostream> //TODO: DELETE
+#include <random>
 using namespace std;
-void SimulationController::StartAStarSimulation(int environment_size, int delay) {
+
+bool SimulationController::StartBacktrackingSimulation(int environment_size, int delay) {
+    //Create and initialize environment
+    Environment environment(environment_size);
+
+    //Create Units for Environment
+    RedHood redHood("RedHood");
+    Granny granny("Granny");
+    Wolf wolf("Wolf");
+    Bear bear("Bear");
+    Cutter cutter("Cutter");
+
+    //Add Units in Environment
+    environment.AddUnit(redHood);
+    environment.AddUnit(granny);
+    environment.AddUnit(cutter);
+    environment.AddUnit(wolf);
+    environment.AddUnit(bear);
+
+    // Place Unit
+    PlaceUnitsRandomly(environment);
+
+    environment.UpdateUnitsPositions();
+    redHood.SetGoal(granny.GetPosition());
+    environment.UpdateUnitsPositions();
+    redHood.SetEnvironment(environment);
+    wolf.SetEnvironment(environment);
+    bear.SetEnvironment(environment);
+
+    while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
+        if(delay!=0)system("CLS");
+        redHood.MakeActionBacktracking();
+        wolf.MakeAction();
+        bear.MakeAction();
+        environment.UpdateUnitsPositions();
+        if (delay!=0) {environment.PrintCell(); Sleep(delay); }
+
+    }
+    return !redHood.IsDead();
+
+
+}
+
+bool SimulationController::StartAStarSimulation(int environment_size, int delay) {
     //Create and initialize environment
     Environment environment(environment_size);
 
@@ -28,28 +71,27 @@ void SimulationController::StartAStarSimulation(int environment_size, int delay)
     // Place Unit
     PlaceUnitsRandomly(environment);
     environment.UpdateUnitsPositions();
-    environment.UpdateUnitsPositions();
     redHood.SetGoal(granny.GetPosition());
     redHood.SetEnvironment(environment);
     wolf.SetEnvironment(environment);
     bear.SetEnvironment(environment);
-
     while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
-        system("CLS");
+        if(delay!=0)system("CLS");
         redHood.MakeAction();
         wolf.MakeAction();
         bear.MakeAction();
         environment.UpdateUnitsPositions();
-        if (delay!=0) {environment.PrintCell();cout<<endl;}
-        Sleep(delay);
+        if (delay!=0) {environment.PrintCell();cout<<endl;  Sleep(delay);}
+
     }
+    return !redHood.IsDead();
 
 
 
 }
 
 void SimulationController::PlaceUnitsRandomly(Environment &environment) {
-    std::srand(time(NULL));
+    std::srand(static_cast<unsigned int>(time(NULL)));
     typedef pair<int, int> point;
     int size = environment.GetSize();
     int amount_of_cells = environment.GetSize() * environment.GetSize();
@@ -58,7 +100,7 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
         int y = i / size; int x = i%size;
         cells[i] = point(y,x);
     }
-
+    
     //Set RedHood Position
     Unit* unit = environment.GetUnitWithID("RedHood");
     int random_index = 0;
@@ -139,42 +181,4 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
 
 }
 
-void SimulationController::StartBacktrackingSimulation(int environment_size, int delay) {
-    //Create and initialize environment
-    Environment environment(environment_size);
 
-    //Create Units for Environment
-    RedHood redHood("RedHood");
-    Granny granny("Granny");
-    Wolf wolf("Wolf");
-    Bear bear("Bear");
-    Cutter cutter("Cutter");
-
-    //Add Units in Environment
-    environment.AddUnit(redHood);
-    environment.AddUnit(granny);
-    environment.AddUnit(cutter);
-    environment.AddUnit(wolf);
-    environment.AddUnit(bear);
-
-    // Place Unit
-    PlaceUnitsRandomly(environment);
-    environment.UpdateUnitsPositions();
-
-    redHood.SetGoal(granny.GetPosition());
-    environment.UpdateUnitsPositions();
-    redHood.SetEnvironment(environment);
-    wolf.SetEnvironment(environment);
-    bear.SetEnvironment(environment);
-
-    while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
-        system("CLS");
-        redHood.MakeActionBacktracking();
-        environment.UpdateUnitsPositions();
-        if (delay!=0) {environment.PrintCell();}
-        Sleep(delay);
-
-    }
-
-
-}

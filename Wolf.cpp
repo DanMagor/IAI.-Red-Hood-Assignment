@@ -35,12 +35,14 @@ void Wolf::SetEnvironment(Environment &environment) {
 }
 
 
-void Wolf::CheckArea() {
+bool Wolf::CheckArea() {
     Unit *redhood = environment_->GetUnitWithID("RedHood");
     point pos = redhood->GetPosition();
     if (environment_->IsWolfDetection(pos)){
         redhood->SetLife(0);
+        return true;
     }
+    return false;
 }
 void Wolf::MakeAction() {
     CheckArea();

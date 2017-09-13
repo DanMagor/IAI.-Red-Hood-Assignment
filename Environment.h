@@ -33,7 +33,6 @@ public:
     // Environment Information
     int GetSize();     //return environment size (width and length)
     void PrintCell();
-    const Unit& GetUnitFromCell(const Point &);
     Unit* GetUnitWithID(string);   //return a reference of unit in environment with specific ID
     bool IsWolfDetection(point);
     bool IsBearDetection(point);

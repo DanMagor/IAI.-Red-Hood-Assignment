@@ -6,7 +6,6 @@
 #define ASSIGNMENT1_UNIT_H
 
 #include <vector>
-#include "Point.h"
 #include <string>
 
 
@@ -17,7 +16,7 @@ protected:
     string ID_;
     pair<int,int> position_; //the position of unit in environment
     char symbol_=' ';  //symbol for visualization
-    int life_ = 0;
+    int life_;
 public:
     //Initialization
     Unit(string); //constructor with ID initialization
@@ -36,7 +35,7 @@ public:
     void SetPosition(int,int);
     virtual void MakeAction();
 
-    virtual void CheckArea();
+    virtual bool CheckArea();
     virtual void Die();
     virtual void SetLife(int);
     virtual int GetLife();

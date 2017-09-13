@@ -21,7 +21,7 @@ public:
     void SetEnvironment(Environment &);
     void SetPosition(point position);
 
-    void CheckArea();
+    bool CheckArea();
 
     void MakeAction();
 };

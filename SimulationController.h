@@ -22,8 +22,8 @@
 
 class SimulationController {
 public:
-    static void StartAStarSimulation(int,int);
-    static void StartBacktrackingSimulation(int,int);
+    static bool StartAStarSimulation(int,int);
+    static bool StartBacktrackingSimulation(int,int);
 
 private:
     static void PlaceUnitsRandomly(Environment&);

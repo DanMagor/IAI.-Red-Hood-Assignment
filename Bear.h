@@ -18,7 +18,7 @@ public:
 
 
     void MakeAction();
-    void CheckArea();
+    bool CheckArea();
     void SetEnvironment(Environment &);
 
 };

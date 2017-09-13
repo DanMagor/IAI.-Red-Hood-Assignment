@@ -8,6 +8,7 @@
 RedHood::RedHood(string ID) : Unit(ID) {
     symbol_ = 'R';
     position_ = point(0, 0);
+    life_ = 6;
     //set wolf detection cells:
 
 }
@@ -22,9 +23,9 @@ void RedHood::SetEnvironment(Environment &environment) {
 void RedHood::MakeAction() {
     UpdateWolfDetection();
     UpdateBearDetection();
-    CheckArea();
-    path_ = AStar::FindPath(graph_environment_, position_, goal_);
-    if (path_.empty()) Die();
+    if (path_.empty()) path_ = AStar::FindPath(graph_environment_, position_, goal_);
+    if(CheckArea()){ path_ = AStar::FindPath(graph_environment_, position_, goal_); }
+    if (path_.empty() || life_ <=0) Die();
     else {
         SetPosition(path_.top());
         path_.pop();
@@ -67,12 +68,12 @@ void RedHood::SetGoal(point goal) {
 
 }
 
-void RedHood::CheckArea() {
-
+bool RedHood::CheckArea() {
+    bool it_changed = false;
     for (auto c:wolf_detection_cells) {
         if (environment_->IsWolfDetection(c)) {
             graph_environment_.DeleteVertex(c);
-
+            it_changed = true;
         }
     }
     for (auto c:bear_detection_cells) {
@@ -96,11 +97,13 @@ void RedHood::CheckArea() {
             graph_environment_.SetEdgeWeight(temp, c, 100);
 
             path_backtracking_ = stack<point>();
+            it_changed = true;
 
         }
 
 
     }
+    return it_changed;
 
 }
 
@@ -157,6 +160,10 @@ RedHood::~RedHood() {
 
 int RedHood::GetLife() {
     return life_;
+}
+
+void RedHood::SetLife(int life) {
+    life_ = life;
 }
 
 
