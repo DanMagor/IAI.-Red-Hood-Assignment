@@ -26,15 +26,15 @@ int main() {
             ++astar_success;
     }
     float astar_time = float(clock() - begin_time) / CLOCKS_PER_SEC / n;
-    const clock_t begin_time1 = clock();
 
+    const clock_t begin_time1 = clock();
     for (int i = 0; i < n; i++) {
         std::srand(i);
         if (SimulationController::StartBacktrackingSimulation(DEFAULT_SIZE, delay))
             ++backtrack_success;
     }
-    system("CLS");
     float backtrack_time = float(clock() - begin_time1) / CLOCKS_PER_SEC / n;
+    system("CLS");
     cout << "Average amount of time for A* algorithm: " << astar_time << " sec" << endl;
     cout << "Wins: " << astar_success << "  Lose: " << n - astar_success << endl;
     cout << "Average amount of time for BackTracking algorithm: " << backtrack_time << " sec" << endl;

@@ -32,13 +32,12 @@ bool SimulationController::StartBacktrackingSimulation(int environment_size, int
 
     environment.UpdateUnitsPositions();
     redHood.SetGoal(granny.GetPosition());
-    environment.UpdateUnitsPositions();
     redHood.SetEnvironment(environment);
     wolf.SetEnvironment(environment);
     bear.SetEnvironment(environment);
 
     while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
-        if(delay!=0)system("CLS");
+        if(delay!=0) system("CLS");
         redHood.MakeActionBacktracking();
         wolf.MakeAction();
         bear.MakeAction();

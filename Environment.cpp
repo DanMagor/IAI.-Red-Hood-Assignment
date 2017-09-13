@@ -68,7 +68,7 @@ void Environment::UpdateUnitsPositions() {
 
 
 
-//Debug Function #TODO: DELETE IF NEED NOT
+
 void Environment::PrintCell() {
 
     for (int i = 0; i < size_; ++i) {

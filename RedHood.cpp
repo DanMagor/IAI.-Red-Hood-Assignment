@@ -24,7 +24,8 @@ void RedHood::MakeAction() {
     UpdateWolfDetection();
     UpdateBearDetection();
     if (path_.empty()) path_ = AStar::FindPath(graph_environment_, position_, goal_);
-    if(CheckArea()){ path_ = AStar::FindPath(graph_environment_, position_, goal_); }
+    if(CheckArea()){
+        path_ = AStar::FindPath(graph_environment_, position_, goal_); }
     if (path_.empty() || life_ <=0) Die();
     else {
         SetPosition(path_.top());
@@ -34,9 +35,11 @@ void RedHood::MakeAction() {
 }
 
 void RedHood::MakeActionBacktracking() {
+    UpdateBearDetection();
+    UpdateWolfDetection();
     if (path_backtracking_.empty()){
    path_backtracking_ = Backtracking::FindPath(graph_environment_,environment_,position_,goal_);}
-    if (path_backtracking_.empty()) Die();
+    if (path_backtracking_.empty() || life_<=0) Die();
     else {
         point &temp = path_backtracking_.top();
         SetPosition(temp);
