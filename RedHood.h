@@ -20,7 +20,7 @@ private:
     point goal_;
     bool is_dead_ = false;
     stack<point> path_;
-    vector<point> path_backtracking_;
+    stack<point> path_backtracking_;
     vector<point> wolf_detection_cells;
     vector<point> bear_detection_cells;
     int life_=6;
@@ -44,6 +44,8 @@ public:
 
     void Die();
     bool IsDead();
+
+    bool CheckAreaBacktracking();
 };
 
 

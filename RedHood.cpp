@@ -23,8 +23,7 @@ void RedHood::MakeAction() {
     UpdateWolfDetection();
     UpdateBearDetection();
     CheckArea();
-    if (path_.empty()){
-    path_ = AStar::FindPath(graph_environment_, position_, goal_);}
+    path_ = AStar::FindPath(graph_environment_, position_, goal_);
     if (path_.empty()) Die();
     else {
         SetPosition(path_.top());
@@ -32,19 +31,15 @@ void RedHood::MakeAction() {
     }
 
 }
-void RedHood::MakeActionBacktracking(){
-    UpdateWolfDetection();
-    UpdateBearDetection();
-    CheckArea();
+
+void RedHood::MakeActionBacktracking() {
     if (path_backtracking_.empty()){
-    path_backtracking_ = Backtracking::FindPath(graph_environment_, position_, goal_);}
+   path_backtracking_ = Backtracking::FindPath(graph_environment_,environment_,position_,goal_);}
     if (path_backtracking_.empty()) Die();
     else {
-        for(auto v: path_backtracking_){
-            cout<<v.first<<" "<<v.second<<endl;
-        }
-        SetPosition(path_backtracking_.front());
-        path_backtracking_.erase(path_backtracking_.begin());
+        point &temp = path_backtracking_.top();
+        SetPosition(temp);
+        path_backtracking_.pop();
     }
 }
 
@@ -77,8 +72,6 @@ void RedHood::CheckArea() {
     for (auto c:wolf_detection_cells) {
         if (environment_->IsWolfDetection(c)) {
             graph_environment_.DeleteVertex(c);
-            path_ = stack<point>();
-            path_backtracking_.clear();
 
         }
     }
@@ -101,10 +94,8 @@ void RedHood::CheckArea() {
 
             temp = point(y, x + 1);
             graph_environment_.SetEdgeWeight(temp, c, 100);
-            path_ = stack<point>();
-            path_backtracking_.clear();
 
-
+            path_backtracking_ = stack<point>();
 
         }
 
@@ -112,6 +103,8 @@ void RedHood::CheckArea() {
     }
 
 }
+
+
 
 
 
@@ -136,7 +129,6 @@ void RedHood::UpdateWolfDetection() {
     temp = point(y, x - 2);
     wolf_detection_cells.push_back(temp);
 }
-
 void RedHood::UpdateBearDetection() {
     bear_detection_cells.clear();
     int y = position_.first;

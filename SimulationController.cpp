@@ -153,15 +153,14 @@ void SimulationController::StartBacktrackingSimulation(int environment_size, int
     //Add Units in Environment
     environment.AddUnit(redHood);
     environment.AddUnit(granny);
+    environment.AddUnit(cutter);
     environment.AddUnit(wolf);
     environment.AddUnit(bear);
-    environment.AddUnit(cutter);
 
     // Place Unit
     PlaceUnitsRandomly(environment);
     environment.UpdateUnitsPositions();
-    wolf.SetPosition(point(2,1));
-    granny.SetPosition(point(3,0));
+
     redHood.SetGoal(granny.GetPosition());
     environment.UpdateUnitsPositions();
     redHood.SetEnvironment(environment);
@@ -169,16 +168,13 @@ void SimulationController::StartBacktrackingSimulation(int environment_size, int
     bear.SetEnvironment(environment);
 
     while(redHood.GetPosition()!=granny.GetPosition() && !redHood.IsDead()){
-       system("CLS");
-        cout<<endl<<endl<<endl;
+        system("CLS");
         redHood.MakeActionBacktracking();
-        wolf.MakeAction();
-        bear.MakeAction();
         environment.UpdateUnitsPositions();
         if (delay!=0) {environment.PrintCell();}
         Sleep(delay);
+
     }
-    if (redHood.IsDead()) cout<<"DIIIIE";
-    Sleep(delay);
+
 
 }

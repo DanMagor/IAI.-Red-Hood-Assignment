@@ -9,44 +9,43 @@
 
 point goal_;
 map<point, int> marked;
-map<point, point> come_from;
+stack<point> path;
 
-vector<point> Backtracking::FindPath(Graph<point> &graph, point start, point goal) {
+stack<point> Backtracking::FindPath(Graph<point> &graph,Environment *environment, point start, point goal) {
     goal_ = goal;
+    marked = map<point,int>();
+    path = stack<point>();
 
-    if(Solve(graph,start)) {
-        vector<point> result;
-        for(auto v: marked){
+    if(Solve(graph,environment,start)) {
+        stack<point> result;
+        result.push(goal);
+        while(!path.empty()) {
 
-            if (v.second == 1)
-                result.push_back(v.first);
+            point &temp = path.top();
+            result.push(temp);
+            path.pop();
         }
-        result.erase(result.begin());
         return result;
     }
-    return vector<point>();
+    return stack<point>();
 
 
 
 }
 
-bool Backtracking::Solve(Graph<point> &graph, point from) {
-
-    if(from == goal_){
-        marked[from] = 1;
-        return true;
+bool Backtracking::Solve(Graph<point> &graph, Environment *environment, point from) {
+    marked[from] = 1;
+    for(auto v:graph.GetNeighbors(from)){
+        if (marked[v] != 0) continue;
+        path.push(v);
+        if (goal_==v)
+            return true;
+        marked[v] = 1;
+        if (environment->IsWolfDetection(v) || environment->IsBearDetection(v)){
+            path.pop();
+        }else
+            if (Solve(graph,environment,v)) return true;
     }
-
-    if (from.first<9 && from.second<9){
-        marked[from] = 1;
-        point temp = point(from.first,from.second+1);
-        if (Solve(graph,temp)) return true;
-        temp = point(from.first+1,from.second);
-        if (Solve(graph,temp)) return true;
-        marked[from] = 0;
-        return false;
-    }
-
     return false;
 
 
