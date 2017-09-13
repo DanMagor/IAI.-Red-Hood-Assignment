@@ -18,23 +18,26 @@ int main() {
     cin >> delay;
     int astar_success, backtrack_success = 0;
     cout << "WAIT, SIMULATING IS WORKING..." << endl;
-    clock_t begin_time = clock();
+    const clock_t begin_time = clock();
+
     for (int i = 0; i < n; i++) {
+        std::srand(i);
         if (SimulationController::StartAStarSimulation(DEFAULT_SIZE, delay))
             ++astar_success;
     }
     float astar_time = float(clock() - begin_time) / CLOCKS_PER_SEC / n;
-    begin_time = clock();
+    const clock_t begin_time1 = clock();
 
     for (int i = 0; i < n; i++) {
+        std::srand(i);
         if (SimulationController::StartBacktrackingSimulation(DEFAULT_SIZE, delay))
             ++backtrack_success;
     }
     system("CLS");
-    float backtrack_time = float(clock() - begin_time) / CLOCKS_PER_SEC / n;
-    cout << "Average amount of time for A* algorithm: " << astar_time << "micro sec" << endl;
+    float backtrack_time = float(clock() - begin_time1) / CLOCKS_PER_SEC / n;
+    cout << "Average amount of time for A* algorithm: " << astar_time << " sec" << endl;
     cout << "Wins: " << astar_success << "  Lose: " << n - astar_success << endl;
-    cout << "Average amount of time for BackTracking algorithm: " << backtrack_time << "micro sec" << endl;
+    cout << "Average amount of time for BackTracking algorithm: " << backtrack_time << " sec" << endl;
     cout << "Wins: " << backtrack_success << "  Lose: " << n - backtrack_success << endl;
     system("PAUSE");
 

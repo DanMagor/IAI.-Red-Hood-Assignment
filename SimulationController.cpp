@@ -3,9 +3,10 @@
 //
 
 #include <set>
+#include <ctime>
 #include "SimulationController.h"
 #include <windows.h>
-#include <random>
+
 using namespace std;
 
 bool SimulationController::StartBacktrackingSimulation(int environment_size, int delay) {
@@ -91,7 +92,7 @@ bool SimulationController::StartAStarSimulation(int environment_size, int delay)
 }
 
 void SimulationController::PlaceUnitsRandomly(Environment &environment) {
-    std::srand(static_cast<unsigned int>(time(NULL)));
+
     typedef pair<int, int> point;
     int size = environment.GetSize();
     int amount_of_cells = environment.GetSize() * environment.GetSize();
@@ -100,7 +101,7 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
         int y = i / size; int x = i%size;
         cells[i] = point(y,x);
     }
-    
+
     //Set RedHood Position
     Unit* unit = environment.GetUnitWithID("RedHood");
     int random_index = 0;

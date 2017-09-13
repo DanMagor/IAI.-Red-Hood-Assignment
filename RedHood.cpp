@@ -96,7 +96,6 @@ bool RedHood::CheckArea() {
             temp = point(y, x + 1);
             graph_environment_.SetEdgeWeight(temp, c, 100);
 
-            path_backtracking_ = stack<point>();
             it_changed = true;
 
         }
