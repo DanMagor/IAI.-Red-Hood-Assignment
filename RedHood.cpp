@@ -83,21 +83,9 @@ bool RedHood::CheckArea() {
 
 
         if (environment_->IsBearDetection(c)) {
-            int y = c.first, x = c.second;
-            point temp = point(y - 1, x);
-            graph_environment_.SetEdgeWeight(temp, c, 100);
-
-
-            temp = point(y + 1, x);
-            graph_environment_.SetEdgeWeight(temp, c, 100);
-
-
-            temp = point(y, x - 1);
-            graph_environment_.SetEdgeWeight(temp, c, 100);
-
-
-            temp = point(y, x + 1);
-            graph_environment_.SetEdgeWeight(temp, c, 100);
+            for(auto v: graph_environment_.GetNeighbors(c)){
+                graph_environment_.SetEdgeWeight(v,c,2);
+            }
 
             it_changed = true;
 

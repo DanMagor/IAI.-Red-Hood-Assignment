@@ -30,7 +30,7 @@ public:
 
     pair<int,int> GetPosition();
 
-    //Unit Behavior
+    virtual //Unit Behavior
     void SetPosition(pair<int,int>);
     void SetPosition(int,int);
     virtual void MakeAction();

@@ -15,15 +15,16 @@
 #include "Graph.h"
 
 using namespace std;
-typedef pair<int,int> point;
+typedef pair<int, int> point;
+
 class AStar {
 private:
-    static stack<point> ConvertMapToStack(map<point,point>, point,point);
+    static stack<point> ConvertMapToStack(map<point, point>, point, point);
+
     template<typename T, typename priority_t>
     struct PriorityQueue {
         typedef pair<priority_t, T> PQElement;
-        priority_queue<PQElement, vector<PQElement>,
-                std::greater<PQElement>> elements;
+        priority_queue<PQElement, vector<PQElement>,std::greater<PQElement>> elements;
 
         inline bool empty() const { return elements.empty(); }
 
@@ -37,8 +38,9 @@ private:
             return best_item;
         }
     };
+
 public:
-    static stack<point> FindPath( Graph<pair<int,int>>&,pair<int,int>, pair<int,int>);
+    static stack<point> FindPath(Graph<pair<int, int>> &, pair<int, int>, pair<int, int>);
 };
 
 

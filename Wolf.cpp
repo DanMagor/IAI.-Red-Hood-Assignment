@@ -47,3 +47,8 @@ bool Wolf::CheckArea() {
 void Wolf::MakeAction() {
     CheckArea();
 }
+
+void Wolf::SetPosition(int y, int x) {
+   position_ = pair<int,int>(y,x);
+    UpdateDetection();
+}

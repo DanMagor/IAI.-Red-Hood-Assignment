@@ -20,7 +20,7 @@ public:
     ~Wolf();
     void SetEnvironment(Environment &);
     void SetPosition(point position);
-
+    void SetPosition(int,int);
     bool CheckArea();
 
     void MakeAction();

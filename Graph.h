@@ -53,6 +53,7 @@ public:
 
     vector<V> GetNeighbors(pair<int, int> v) {  //return Neighbors of vertex V
         vector<V> neighbors;
+        if (vertices.find(v)==vertices.end()) return neighbors;
         for (typename Graph::vertex::edge t:vertices.find(v)->second->edges) {
             neighbors.push_back(t.second->name);
         }
