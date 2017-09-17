@@ -1,0 +1,166 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/AStar.cpp
+AStar.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/AStar.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/AStar.h
+map
+-
+vector
+-
+unordered_map
+-
+queue
+-
+stack
+-
+../Environement/Graph.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/Backtracking.cpp
+Backtracking.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/Backtracking.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/Backtracking.h
+stack
+-
+../Environement/Graph.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.h
+../Environement/Environment.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
+vector
+-
+algorithm
+-
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.cpp
+iostream
+-
+algorithm
+-
+Environment.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
+../Units/Wolf.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
+map
+-
+../Units/Unit.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.cpp
+Graph.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.h
+vector
+-
+map
+-
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.cpp
+synchapi.h
+-
+SimulationController.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.h
+../Units/Granny.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Granny.h
+../Units/Wolf.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.h
+../Units/Bear.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Bear.h
+../Units/Cutter.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Cutter.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.h
+Environment.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
+time.h
+-
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Bear.cpp
+algorithm
+-
+Bear.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Bear.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Bear.h
+Unit.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Cutter.cpp
+Cutter.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Cutter.h
+algorithm
+-
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Cutter.h
+Unit.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Granny.cpp
+Granny.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Granny.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Granny.h
+RedHood.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/RedHood.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/RedHood.cpp
+algorithm
+-
+RedHood.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/RedHood.h
+../Algorithms/AStar.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/AStar.h
+../Algorithms/Backtracking.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/Backtracking.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/RedHood.h
+stack
+-
+Unit.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+../Environement/Environment.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
+../Environement/Graph.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.cpp
+Unit.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+vector
+-
+string
+-
+../Environement/Environment.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.cpp
+Wolf.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.h
+algorithm
+-
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.h
+Unit.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h
+
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/main.cpp
+iostream
+-
+Environement/SimulationController.h
+E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.h
+synchapi.h
+-
+

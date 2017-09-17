@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Assignment_1_v2"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Assignment_1_v2">
+				<Option output="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Assignment_1_v2.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/MinGWx64/include"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../include/c++/4.8.3"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../include/c++/4.8.3/x86_64-w64-mingw32"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../include/c++/4.8.3/backward"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/include"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/include-fixed"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Assignment_1_v2"/>
+					<CompileFile command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Assignment_1_v2/fast">
+				<Option output="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Assignment_1_v2.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/MinGWx64/include"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../include/c++/4.8.3"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../include/c++/4.8.3/x86_64-w64-mingw32"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../include/c++/4.8.3/backward"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/include"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/include-fixed"/>
+					<Add directory="c:\mingwx64\bin\../lib64/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Assignment_1_v2/fast"/>
+					<CompileFile command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGWx64/bin/mingw32-make.exe -f &quot;E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/AStar.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/AStar.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/Backtracking.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Algorithms/Backtracking.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Graph.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Bear.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Bear.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Cutter.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Cutter.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Granny.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Granny.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/RedHood.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/RedHood.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Unit.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.h">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/main.cpp">
+			<Option target="Assignment_1_v2"/>
+		</Unit>
+		<Unit filename="E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
