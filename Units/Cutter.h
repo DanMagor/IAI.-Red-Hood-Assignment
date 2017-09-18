@@ -7,11 +7,11 @@
 
 
 #include "Unit.h"
-
+//Wood Cutter implementation. It's a child of class Unit
 class Cutter: public Unit {
 public:
     bool CheckArea() override;
-    vector<point> DetectionCells();
+    vector<point> DetectionCells(); //return cutter's detection cells
 public:
     void MakeAction() override;
     explicit Cutter(const string &);

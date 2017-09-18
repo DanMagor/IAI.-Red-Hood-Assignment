@@ -6,7 +6,7 @@
 #include "Bear.h"
 
 Bear::Bear(const string &ID) : Unit(ID){
-    symbol_ = 'B';
+    symbol_ = 'B';  //symbol for matrix
 }
 
 vector<point> Bear::DetectionCells() {
@@ -22,17 +22,17 @@ vector<point> Bear::DetectionCells() {
     cells.emplace_back(y-1,x+1);
     cells.emplace_back(y-1,x-1);
     return cells;
-}
+} //return bear's detection cells
 
 void Bear::MakeAction() {
     if (CheckArea()){
-        Unit *r = environment_->GetUnitWithID("RedHood");
+        Unit *r = environment_->GetUnitWithID("RedHood");  //If there is RedHood take 2 berries
         r->SetLife(r->GetLife() - 2);
     }
 }
 
 bool Bear::CheckArea() {
-    point c = environment_->GetUnitWithID("RedHood")->GetPosition();
+    point c = environment_->GetUnitWithID("RedHood")->GetPosition(); //Is there RedHood in detection area? True if there is she
     vector<point> detection = DetectionCells();
     auto result = find(detection.begin(),detection.end(),c);
     return result != detection.end();

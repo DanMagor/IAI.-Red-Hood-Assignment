@@ -16,10 +16,10 @@
 typedef pair<int,int> point;
 class AStar {
 private:
-    static stack<point> ConvertMapToStack(map<point, point>, point, point);
+    static stack<point> ConvertMapToStack(map<point, point>, point, point); //Restore the Path
 
     template<typename T, typename priority_t>
-    struct PriorityQueue {
+    struct PriorityQueue {  //Need for A* realization
         typedef pair<priority_t, T> PQElement;
         priority_queue<PQElement, vector<PQElement>,std::greater<PQElement>> elements;
 
@@ -37,7 +37,7 @@ private:
     };
 
 public:
-    static stack<point> FindPath(Graph<pair<int, int>> &, pair<int, int>, pair<int, int>);
+    static stack<point> FindPath(Graph<pair<int, int>> &, pair<int, int>, pair<int, int>);  //Find Path between start and gola
 };
 
 

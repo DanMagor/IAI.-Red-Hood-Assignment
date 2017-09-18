@@ -14,7 +14,6 @@ CMakeFiles/Assignment_1_v2.dir/Algorithms/Backtracking.cpp.obj: ../Units/Unit.h
 CMakeFiles/Assignment_1_v2.dir/Environement/Environment.cpp.obj: ../Environement/Environment.cpp
 CMakeFiles/Assignment_1_v2.dir/Environement/Environment.cpp.obj: ../Environement/Environment.h
 CMakeFiles/Assignment_1_v2.dir/Environement/Environment.cpp.obj: ../Units/Unit.h
-CMakeFiles/Assignment_1_v2.dir/Environement/Environment.cpp.obj: ../Units/Wolf.h
 
 CMakeFiles/Assignment_1_v2.dir/Environement/Graph.cpp.obj: ../Environement/Graph.cpp
 CMakeFiles/Assignment_1_v2.dir/Environement/Graph.cpp.obj: ../Environement/Graph.h

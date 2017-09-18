@@ -7,11 +7,11 @@
 
 
 #include "Unit.h"
-
+//Bear implementation. It's a child of class Unit
 class Bear: public Unit {
 private:
     bool CheckArea() override;
-    vector<point> DetectionCells();
+    vector<point> DetectionCells(); //return bear's detection cells
 public:
     explicit Bear(const string &);
     void MakeAction() override;

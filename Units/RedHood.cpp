@@ -12,15 +12,15 @@ RedHood::RedHood(string ID) : Unit(ID) {
     symbol_ = 'R';
 
 
-}
+}  //constructor with ID
 
 RedHood::RedHood(string ID, point position) : Unit(ID, position) {
     symbol_ = 'R';
-}
+} //Constructor with ID and position
 
 RedHood::RedHood(string ID, int y, int x) : Unit(ID, y, x) {
     symbol_ = 'R';
-}
+} //Variant of constructor with ID and position
 
 void RedHood::MakeGraphFromEnvironment() {
     Graph<point> graph;
@@ -38,23 +38,24 @@ void RedHood::MakeGraphFromEnvironment() {
         }
     }
     graph_environment_ = graph;
-}
+} //initialize graph from existing environment
 
 void RedHood::MakeAction() {
-    if (path_.empty()) path_ = AStar::FindPath(graph_environment_, position_, goal_);
-    if (CheckArea()) {
+    if (path_.empty())
+        path_ = AStar::FindPath(graph_environment_, position_, goal_); //For First iteration
+    if (CheckArea()) { //If wolf or bear was detected
         path_ = AStar::FindPath(graph_environment_, position_, goal_);
     }
-    if (path_.empty() || life_ <= 0) Die();
+    if (path_.empty() || life_ <= 0) Die(); //Case of loose
     else {
         SetPosition(path_.top());
         path_.pop();
     }
-}
+} //Make a step in simulation with A* algorithm
 
 void RedHood::SetGoal(point goal) {
     goal_ = goal;
-}
+}  //Set current goal for RedHood
 
 bool RedHood::CheckArea() {
     bool danger_detected = false;
@@ -75,12 +76,12 @@ bool RedHood::CheckArea() {
         }
     }
     return danger_detected;
-}
+} // If there is wolf or bear in detection area?
 
 void RedHood::SetEnvironment(Environment &environment) {
     Unit::SetEnvironment(environment);
     MakeGraphFromEnvironment();
-}
+} //Initialize environment
 
 vector<point> RedHood::WolfDetectionCells() {
     vector<point> cells;
@@ -95,7 +96,7 @@ vector<point> RedHood::WolfDetectionCells() {
     cells.emplace_back(y, x + 2);
     cells.emplace_back(y, x - 2);
     return cells;
-}
+}  //Return the vector of point in detection area for wolf
 
 vector<point> RedHood::BearDetectionCells() {
     vector<point> cells;
@@ -106,7 +107,7 @@ vector<point> RedHood::BearDetectionCells() {
     cells.emplace_back(y, x + 1);
     cells.emplace_back(y, x - 1);
     return cells;
-}
+}//Return the vector of point in detection area for bear
 
 void RedHood::MakeActionBacktracking() {
     if (path_.empty()) {
@@ -120,4 +121,4 @@ void RedHood::MakeActionBacktracking() {
         path_.pop();
         CheckArea();
     }
-}
+} //Make a step in simulation with Backtracking algorithm

@@ -15,11 +15,11 @@
 
 class SimulationController {
 public:
-    static vector<int> StartAStarSimulation(int,int);
-    static vector<int> StartBacktrackingSimulation(int,int);
+    static vector<int> StartAStarSimulation(int,int);  //Create Environment, Place Unit and Find Path with A*
+    static vector<int> StartBacktrackingSimulation(int,int); //Create Environment, Place Unit and Find Path with Backtracking
 
 private:
-    static void PlaceUnitsRandomly(Environment&);
+    static void PlaceUnitsRandomly(Environment&); //Place unit in random position with some requirements
 };
 
 

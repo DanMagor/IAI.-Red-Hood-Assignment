@@ -7,11 +7,11 @@
 
 
 #include "Unit.h"
-
+//Wolf implementation. It's a child of class Unit
 class Wolf: public Unit {
 private:
     bool CheckArea() override;
-    vector<point> DetectionCells();
+    vector<point> DetectionCells(); //return wolf's detection cells
 
 public:
     explicit Wolf(const string &);

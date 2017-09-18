@@ -17,9 +17,9 @@ private:
     Graph<point> graph_environment_;
     point goal_;
     stack<point> path_;
-    vector<point> WolfDetectionCells();
-    vector<point> BearDetectionCells();
-    void MakeGraphFromEnvironment();
+    vector<point> WolfDetectionCells();  //Detection cells of wolf for RedHood
+    vector<point> BearDetectionCells(); //Detection cells of bear for RedHood
+    void MakeGraphFromEnvironment();  //Make graph from known environment
     bool CheckArea() override;
 
 public:
@@ -28,10 +28,10 @@ public:
     RedHood(string,point);
     RedHood(string,int,int);
     //Behaviour
-    void MakeAction() override;
-    void MakeActionBacktracking();
-    void SetEnvironment(Environment &) override;
-    void SetGoal(point);
+    void MakeAction() override; //A* Make action
+    void MakeActionBacktracking(); //Backtracking MakeAction
+    void SetEnvironment(Environment &) override; //SetEnvironment for communication
+    void SetGoal(point); //Where is RedHood want to go?
 
 
 };

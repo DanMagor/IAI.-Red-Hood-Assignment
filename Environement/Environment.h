@@ -25,8 +25,8 @@ public:
     int GetSize();
     Unit* GetUnitWithID(string); //return pointer on unit with specific ID
     void PrintCell(); //Visualization
-    vector<point> WolfDetectionCells();
-    vector<point> BearDetectionCells();
+    vector<point> WolfDetectionCells();  //return detection Wolf detection area
+    vector<point> BearDetectionCells();//return detection Bear detection area
     bool IsWolfDetection(point);
     bool IsBearDetection(point);
 

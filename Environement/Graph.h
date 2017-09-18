@@ -10,6 +10,8 @@
 #include <map>
 
 
+//Graph implementation. It is used for A* and backtracking algorithms. Support Templates.
+
 using namespace std;
 
 
@@ -23,7 +25,7 @@ class Graph {
         V name;
 
         vertex(V s) : name(s) {}
-    };
+    };  //struct for single Vertex.
 
 private:
     typedef map<V, vertex *> vmap;
@@ -37,18 +39,19 @@ public:
             temp = new vertex(v);
             vertices[v] = temp;
         }
-    }
+    }  //Add vertex in graph without any edge
 
     void AddEdge(const V from, const V to, E weight = 0.0) {  //add edge from vertex 'from' to vertex 'to' with weight
         vertex *f = (vertices.find(from)->second);
         vertex *t = (vertices.find(to)->second);
         pair<E, vertex *> edge = make_pair(weight, t);
         f->edges.push_back(edge);
-    }
-
+    } //Add directed edge from vertex 'from' to
+                                                                    // vertex 'to' with weight.
+                                                                    // Default value for weight is 0
     vmap GetVertices() {
         return vertices;
-    }
+    }  //return vmap of vertices
 
     vector<V> GetNeighbors(pair<int, int> v) {  //return Neighbors of vertex V
         vector<V> neighbors;
@@ -57,7 +60,7 @@ public:
             neighbors.push_back(t.second->name);
         }
         return neighbors;
-    }
+    } //return vector of neighbors some current vertex
 
     void DeleteVertex(V deleted_vertex) {
         for (auto v: vertices) {
@@ -70,7 +73,7 @@ public:
             }
         }
         vertices.erase(deleted_vertex);
-    }
+    }  //delete vertex and all edge from it. Also delete all edges that point ob that vertex
 
     double GetEdgeWeight(pair<int, int> v1, pair<int, int> v2) {
         if (vertices.find(v1) != vertices.end()) {
@@ -80,7 +83,7 @@ public:
                 }
             }
         }
-    }
+    } // return weight of edge between vertex v1 and v2
 
     void SetEdgeWeight(V v1, V v2, E weight) {
         if (vertices.find(v1) != vertices.end()) {
@@ -91,11 +94,11 @@ public:
             }
         }
 
-    }
+    }  //set weight for edge between vertex v1 and v2
 
     bool ContainsVertex(V v) {
         return !(vertices.find(v) == vertices.end());
-    }
+    }  // Is this graph contains vertex v? True if contains
 
 
 };

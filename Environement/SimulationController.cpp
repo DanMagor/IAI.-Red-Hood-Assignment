@@ -17,6 +17,11 @@ vector<int> SimulationController::StartAStarSimulation(int size, int delay) {
     Wolf wolf("Wolf");
     Bear bear("Bear");
     Cutter cutter("Cutter");
+    redHood.SetEnvironment(environment);
+    wolf.SetEnvironment(environment);
+    bear.SetEnvironment(environment);
+    cutter.SetEnvironment(environment);
+
 
     //Add Units to Environment
     environment.AddUnit(redHood);
@@ -27,16 +32,10 @@ vector<int> SimulationController::StartAStarSimulation(int size, int delay) {
 
     //Place Unit
     PlaceUnitsRandomly(environment);
-
     environment.UpdateUnitsPositions();
-    //Units Initialization
+
     redHood.SetGoal(granny.GetPosition());
-    redHood.SetEnvironment(environment);
-    wolf.SetEnvironment(environment);
-    bear.SetEnvironment(environment);
-
-
-    vector<int> statistic;
+    vector<int> statistic; //time and amount of step for simulating
     int steps = 0;
     //Simulation:
     while (redHood.GetPosition() != granny.GetPosition() && redHood.IsLife()) {
@@ -45,9 +44,10 @@ vector<int> SimulationController::StartAStarSimulation(int size, int delay) {
             Sleep(delay);
             system("CLS");
         }
-        redHood.MakeAction();
+        redHood.MakeAction();  //Each agent do some action
         wolf.MakeAction();
         bear.MakeAction();
+        cutter.MakeAction();
         environment.UpdateUnitsPositions();
         ++steps;
 
@@ -57,7 +57,6 @@ vector<int> SimulationController::StartAStarSimulation(int size, int delay) {
     return statistic;
 
 }
-
 
 
 void SimulationController::PlaceUnitsRandomly(Environment &environment) {
@@ -80,7 +79,7 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     point p = iter->second;
     unit->SetPosition(p);
     cells.erase(key);
-    //Also need to array neighbors cells
+    //Also need to exclude neighbors cells
     cells.erase(key + 1);
     cells.erase(key + size);
     cells.erase(key + size + 1);
@@ -89,11 +88,11 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     unit = environment.GetUnitWithID("Wolf");
     random_index = rand() % cells.size();
     iter = cells.begin();
-    advance(iter, random_index);
+    advance(iter, random_index); //Take random cell from list of available cells
     key = iter->first;
     p = iter->second;
     unit->SetPosition(p);
-    cells.erase(key);
+    cells.erase(key); //exclude wolf position cell
 
     //Set Bear Position
     unit = environment.GetUnitWithID("Bear");
@@ -102,11 +101,11 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     advance(iter, random_index);
     key = iter->first;
     p = iter->second;
-    unit->SetPosition(p);
-    cells.erase(key);
+    unit->SetPosition(p);  //Set random position
+    cells.erase(key); //exclude bear position cell
 
 
-    // Delete bear and wolf range from available cells
+    // Delete bear and wolf range from available cells. We don't want to place granny in wold or bear detection
     //Bear:
     cells.erase(key - size);
     cells.erase(key + size);
@@ -138,7 +137,7 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     key = iter->first;
     p = iter->second;
     unit->SetPosition(p);
-    cells.erase(key);
+    cells.erase(key);  //exclude granny position cell
 
     //Set Cutter Position
     unit = environment.GetUnitWithID("Cutter");
@@ -148,16 +147,21 @@ void SimulationController::PlaceUnitsRandomly(Environment &environment) {
     key = iter->first;
     p = iter->second;
     unit->SetPosition(p);
-    cells.erase(key);
+    cells.erase(key); //exclude cutter position cell (for some theoretical future placement)
 }
 
 vector<int> SimulationController::StartBacktrackingSimulation(int size, int delay) {
+    //Create and initialize environment and unit
     Environment environment(size);
     RedHood redHood("RedHood");
     Granny granny("Granny");
     Wolf wolf("Wolf");
     Bear bear("Bear");
     Cutter cutter("Cutter");
+    redHood.SetEnvironment(environment);
+    wolf.SetEnvironment(environment);
+    bear.SetEnvironment(environment);
+    cutter.SetEnvironment(environment);
 
     //Add Units to Environment
     environment.AddUnit(redHood);
@@ -166,17 +170,13 @@ vector<int> SimulationController::StartBacktrackingSimulation(int size, int dela
     environment.AddUnit(bear);
     environment.AddUnit(cutter);
 
-    //Place Unit
+    //Place Units
     PlaceUnitsRandomly(environment);
-
     environment.UpdateUnitsPositions();
-    //Units Initialization
-    redHood.SetGoal(granny.GetPosition());
-    redHood.SetEnvironment(environment);
-    wolf.SetEnvironment(environment);
-    bear.SetEnvironment(environment);
 
-    vector<int> statistic;
+    redHood.SetGoal(granny.GetPosition());
+
+    vector<int> statistic; //time and amount of step for simulating
     int steps = 0;
     //Simulation:
     while (redHood.GetPosition() != granny.GetPosition() && redHood.IsLife()) {
@@ -185,9 +185,10 @@ vector<int> SimulationController::StartBacktrackingSimulation(int size, int dela
             Sleep(delay);
             system("CLS");
         }
-        redHood.MakeActionBacktracking();
-         wolf.MakeAction();
+        redHood.MakeActionBacktracking();    //Each agent do some action
+        wolf.MakeAction();
         bear.MakeAction();
+        cutter.MakeAction();
         environment.UpdateUnitsPositions();
         ++steps;
 

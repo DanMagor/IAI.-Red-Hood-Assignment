@@ -47,8 +47,6 @@ algorithm
 -
 Environment.h
 E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
-../Units/Wolf.h
-E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Units/Wolf.h
 
 E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/Environment.h
 map
@@ -161,6 +159,4 @@ iostream
 -
 Environement/SimulationController.h
 E:/Anton/Study/2nd Year/Fall/AI/Assignment 1 v2/Environement/SimulationController.h
-synchapi.h
--
 

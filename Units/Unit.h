@@ -8,7 +8,7 @@
 #include <vector>
 #include <string>
 #include "../Environement/Environment.h"
-
+//Base class for all agents in enviroment. It include basic realization of logic and initialization methods.
 using namespace std;
 
 typedef pair<int, int> point;
@@ -17,12 +17,12 @@ class Unit {
 
 protected:
     string ID_;   // for access in environment;
-    point position_; //
+    point position_; // position for unit
     char symbol_ = ' '; //for visualization
-    int life_ = 6;
-    bool is_life = true;
-    Environment *environment_;
-    virtual bool CheckArea() = 0;
+    int life_ = 6; //Need for RedHood but could be use with any agent
+    bool is_life = true; //by default our agent is life.
+    Environment *environment_; //Reference on environment where our agents placed
+    virtual bool CheckArea() = 0; //Virtual function for area detection. Must be implemented.
 
 public:
     //Initialization
@@ -32,7 +32,7 @@ public:
 
      Unit(string, int, int);
 
-    virtual void SetEnvironment(Environment&);
+    virtual void SetEnvironment(Environment&); //Default Environment Initiaization
 
     //Units information
     string GetID();
